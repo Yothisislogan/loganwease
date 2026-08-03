@@ -37,3 +37,12 @@ Version 006 (thoughts page):
 - `thoughts/index.html`: post list with one published field log and five drafts, plus a Netlify email-subscribe form (`thoughts-subscribe`).
 - `thoughts/insurance-is-emotional.html`: first essay ("Insurance is emotional before it is technical") — a starter draft assembled from positions already published on the site; Logan should edit before treating it as final.
 - Homepage: "Thoughts" nav link; Field Logs section reordered with the published log linking out and a CTA to the thoughts page.
+
+Version 007 (seven changes pass):
+1. Merged the redundant Open Tabs / Now Building / Case Files sections into one Case Files board with status stamps (Active / Experiment / Building / Idea folder). Nav is now Case files / Build map / Thoughts / Contact.
+2. The hero "operating log" is a real terminal: help, projects, thoughts, bio, contact, claim, coffee, sudo, clear.
+3. The contact form slams a red RECEIVED stamp on submit before posting (skipped under prefers-reduced-motion).
+4. The hero status note is dated ("On the desk · Aug 3, 2026") — edit it by hand when things ship.
+5. New `bio.html` — clean printable bio with headshot, fast facts, and a print-to-PDF button; replaces the raw .txt downloads (txt still linked from the bio page).
+6. Community proof added to Receipts: Daily Press disaster-recovery kits and Allstate Foundation grants, as a taped-in note.
+7. Desk details: coffee ring on Case Files, pencil scribble in Field Notes, photo-strip hover straighten, and a footer link row (version bumped to 004 in the footer).
