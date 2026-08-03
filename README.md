@@ -29,5 +29,5 @@ Version 004 (fixes pass):
 
 Version 005 (real numbers pass, sourced from the previous loganwease.com site):
 - Receipts section now leads with a hard-number stat row ($2.8M→$7.6M, 15%→27% close rate, top-3% Allstate ranking, ~1,300-agent keynote) and specific proof chips.
-- Build map rebuilt with the real career timeline: retail/ops (2001–2012, Aramark), State Farm and life production (2012–2014), Wease Financial (2014, grown and sold), We Insure Things, current experiments.
+- Build map rebuilt with the real career timeline: retail/ops (2001–2012, Aramark), State Farm and life production (2012–2014), Wease Financial (2014–2021, grown and sold), We Insure Things, current experiments.
 - Short bio expanded with the Wease Financial track record; JSON-LD gains alumniOf.
