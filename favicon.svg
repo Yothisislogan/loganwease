@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g transform="rotate(-4 32 32)">
+    <rect x="12" y="13" width="45" height="45" rx="7" fill="#00AEEF"/>
+    <rect x="7" y="8" width="45" height="45" rx="7" fill="#fff8e9" stroke="#111419" stroke-width="3"/>
+    <text x="29.5" y="41" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="26" letter-spacing="-2" fill="#111419">LW</text>
+  </g>
+</svg>
