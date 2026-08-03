@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logan Wease | Founder, Operator, Builder</title>
+  <meta name="description" content="Logan Wease is an insurance founder and operator building agencies, teams, practical web projects, training systems, and useful business tools that make complicated things easier." />
+  <meta property="og:title" content="Logan Wease | Founder, Operator, Builder" />
+  <meta property="og:description" content="A personal site for Logan Wease: founder, insurance operator, and builder of practical systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logan-seated.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111419;
+      --ink-2:#2d3440;
+      --paper:#f3ead8;
+      --paper-2:#fff8e9;
+      --card:#fffaf0;
+      --line:rgba(17,20,25,.18);
+      --line-dark:rgba(255,248,233,.18);
+      --blue:#00AEEF;
+      --blue-deep:#0078a7;
+      --orange:#ff8a3d;
+      --green:#77d5b8;
+      --gold:#f0c452;
+      --red:#ff6262;
+      --navy:#07131f;
+      --navy-2:#0d2135;
+      --shadow: 0 25px 70px rgba(17,20,25,.24);
+      --soft: 0 16px 40px rgba(17,20,25,.12);
+      --max:1180px;
+      --head:'Fraunces', Georgia, serif;
+      --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --body:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:var(--body);
+      line-height:1.55;
+      background:
+        linear-gradient(90deg, rgba(17,20,25,.045) 1px, transparent 1px) 0 0/34px 34px,
+        linear-gradient(rgba(17,20,25,.035) 1px, transparent 1px) 0 0/34px 34px,
+        radial-gradient(circle at 16% 4%, rgba(0,174,239,.22), transparent 24rem),
+        radial-gradient(circle at 85% 12%, rgba(255,138,61,.18), transparent 25rem),
+        linear-gradient(180deg, var(--paper) 0%, #f8f1e4 46%, #eaf4f8 100%);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+      opacity:.23;
+      z-index:9999;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--blue);color:#00131c}
+
+    .skip-link{position:absolute;left:-999px;top:14px;background:#000;color:#fff;padding:10px 14px;border-radius:999px;z-index:999}
+    .skip-link:focus{left:14px}
+
+    .site-frame{
+      max-width:1440px;
+      margin:0 auto;
+      position:relative;
+      border-left:1px solid rgba(17,20,25,.08);
+      border-right:1px solid rgba(17,20,25,.08);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(16px);
+      background:rgba(243,234,216,.84);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font-family:var(--mono);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+    }
+    .brand-stamp{
+      width:42px;height:42px;border:2px solid var(--ink);border-radius:6px;
+      display:grid;place-items:center;
+      transform:rotate(-4deg);
+      box-shadow:5px 5px 0 var(--blue);
+      background:var(--paper-2);
+      font-family:var(--head);font-weight:900;font-size:20px;letter-spacing:-.05em;
+    }
+    .nav-links{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2)}
+    .nav-links a{padding:10px 11px;border:1px solid transparent;border-radius:999px}
+    .nav-links a:hover{border-color:var(--line);background:rgba(255,250,240,.65)}
+    .nav-links .nav-cta{background:var(--ink);color:var(--paper-2);border-color:var(--ink);box-shadow:4px 4px 0 var(--orange)}
+    .menu-btn{display:none;border:2px solid var(--ink);background:var(--paper-2);border-radius:999px;padding:9px 12px;font-family:var(--mono);font-weight:900;text-transform:uppercase}
+
+    .section{max-width:var(--max);margin:0 auto;padding:88px 20px;position:relative}
+    .section.tight{padding-top:58px;padding-bottom:58px}
+    .kicker{font-family:var(--mono);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+    .kicker::before{content:"";width:34px;height:2px;background:var(--blue-deep)}
+    h1,h2,h3{margin:0;font-family:var(--head);font-weight:900;letter-spacing:-.055em;line-height:.94}
+    h1{font-size:clamp(56px, 9vw, 136px);max-width:980px}
+    h2{font-size:clamp(42px, 6vw, 82px)}
+    h3{font-size:clamp(26px, 3vw, 42px)}
+    p{margin:0}
+
+    .hero{
+      max-width:var(--max);margin:0 auto;padding:58px 20px 82px;
+      display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:42px;align-items:center;position:relative;
+    }
+    .hero::after{
+      content:"FIELD FILE: OPEN";
+      position:absolute;right:10px;bottom:14px;
+      font-family:var(--mono);font-size:12px;font-weight:900;letter-spacing:.18em;color:rgba(17,20,25,.23);
+      transform:rotate(-2deg);
+    }
+    .hero-lede{font-size:clamp(18px,2vw,24px);max-width:780px;color:var(--ink-2);margin-top:26px;line-height:1.45}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{
+      min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      border:2px solid var(--ink);border-radius:10px;padding:12px 18px;
+      font-family:var(--mono);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;
+      box-shadow:5px 5px 0 rgba(17,20,25,.18);transition:.18s ease;background:var(--paper-2);
+    }
+    .btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 rgba(17,20,25,.2)}
+    .btn-primary{background:var(--ink);color:var(--paper-2);box-shadow:6px 6px 0 var(--blue)}
+    .btn-orange{background:var(--orange);color:#170a03;box-shadow:6px 6px 0 var(--ink)}
+
+    .hero-board{position:relative;min-height:620px;perspective:1200px}
+    .photo-card{
+      position:absolute;inset:52px 34px 34px 34px;background:#fff;padding:14px;border:2px solid var(--ink);
+      box-shadow:16px 18px 0 rgba(17,20,25,.18);transform:rotate(2.5deg);z-index:3;
+    }
+    .photo-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.05)}
+    .photo-card::before{
+      content:"";position:absolute;left:50%;top:-22px;width:138px;height:34px;transform:translateX(-50%) rotate(-2deg);background:rgba(245,196,81,.68);border:1px solid rgba(17,20,25,.12);box-shadow:0 4px 8px rgba(17,20,25,.12);z-index:5
+    }
+    .file-tab{position:absolute;left:0;top:16px;background:var(--gold);border:2px solid var(--ink);padding:9px 14px;font-family:var(--mono);font-weight:900;font-size:12px;text-transform:uppercase;transform:rotate(-5deg);z-index:7;box-shadow:5px 5px 0 rgba(17,20,25,.18)}
+    .receipt{
+      position:absolute;right:0;top:0;width:230px;background:var(--paper-2);border:2px solid var(--ink);padding:18px;z-index:5;transform:rotate(7deg);box-shadow:10px 12px 0 rgba(17,20,25,.15);
+      font-family:var(--mono);font-size:12px;line-height:1.45;
+    }
+    .receipt strong{display:block;font-size:13px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em}
+    .receipt .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(119,213,184,.28);margin-right:6px}
+    .console{
+      position:absolute;left:2px;bottom:8px;width:330px;background:var(--navy);color:#dceef6;border:2px solid var(--ink);border-radius:16px;padding:18px;z-index:6;transform:rotate(-3deg);box-shadow:12px 14px 0 rgba(17,20,25,.22);
+      font-family:var(--mono);font-size:12px;
+    }
+    .console-title{display:flex;align-items:center;gap:6px;margin-bottom:12px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+    .light{width:9px;height:9px;border-radius:50%;background:var(--red)}.light:nth-child(2){background:var(--gold)}.light:nth-child(3){background:var(--green)}
+    .console code{display:block;color:#9be8ff;margin:7px 0;white-space:normal}
+    .postit{
+      position:absolute;right:18px;bottom:42px;width:210px;background:#fff071;border:2px solid var(--ink);padding:18px;z-index:8;transform:rotate(5deg);box-shadow:9px 11px 0 rgba(17,20,25,.16);
+      font-family:var(--mono);font-size:13px;font-weight:800;line-height:1.35;
+    }
+
+    .ticker-wrap{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper-2);overflow:hidden}
+    .ticker{display:flex;width:max-content;animation:scroll 26s linear infinite;font-family:var(--mono);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+    .ticker span{padding:13px 24px;white-space:nowrap}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+
+    .manifesto{
+      display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:stretch;
+    }
+    .manifesto-title{background:var(--ink);color:var(--paper-2);border-radius:28px;padding:30px;border:2px solid var(--ink);box-shadow:10px 12px 0 var(--blue);position:relative;overflow:hidden}
+    .manifesto-title::after{content:"";position:absolute;right:-90px;bottom:-80px;width:240px;height:240px;background:radial-gradient(circle, rgba(0,174,239,.35), transparent 68%)}
+    .manifesto-title p{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#9de9ff;margin-top:18px}
+    .manifesto-copy{background:rgba(255,250,240,.82);border:2px solid var(--ink);border-radius:28px;padding:34px;box-shadow:var(--soft)}
+    .manifesto-copy p{font-size:clamp(20px,2vw,28px);line-height:1.35;font-weight:750;letter-spacing:-.03em;color:var(--ink-2)}
+    .manifesto-copy .small{font-size:16px;font-weight:600;color:#4d5663;margin-top:18px;line-height:1.7}
+
+    .case-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:30px}
+    .case-card{
+      background:var(--card);border:2px solid var(--ink);border-radius:22px;padding:22px;box-shadow:8px 9px 0 rgba(17,20,25,.14);position:relative;overflow:hidden;min-height:245px;display:flex;flex-direction:column;justify-content:space-between;
+      transition:.18s ease;
+    }
+    .case-card:hover{transform:translateY(-5px) rotate(-.5deg);box-shadow:12px 14px 0 rgba(17,20,25,.18)}
+    .case-card:nth-child(1){grid-column:span 5;background:#e8f8ff}.case-card:nth-child(2){grid-column:span 4;background:#fff1d4}.case-card:nth-child(3){grid-column:span 3;background:#efffed}
+    .case-card:nth-child(4){grid-column:span 4;background:#fff7fb}.case-card:nth-child(5){grid-column:span 4;background:#f5f0ff}.case-card:nth-child(6){grid-column:span 4;background:#eef8f3}
+    .case-label{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep);display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .case-card h3{font-size:clamp(27px,3.2vw,46px);margin-bottom:16px}
+    .case-card p{color:#394352;font-weight:600;line-height:1.65}
+    .case-mark{position:absolute;right:16px;top:14px;font-family:var(--head);font-size:78px;line-height:1;font-weight:900;color:rgba(17,20,25,.06)}
+
+    .quote-panel{
+      margin-top:30px;border:2px solid var(--ink);border-radius:32px;background:var(--navy);color:var(--paper-2);padding:34px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;box-shadow:14px 16px 0 rgba(0,174,239,.34);position:relative;overflow:hidden;
+    }
+    .quote-panel::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px) 0 0/28px 28px,linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0/28px 28px;opacity:.4}
+    .quote-panel>*{position:relative;z-index:2}
+    .quote-panel blockquote{margin:0;font-family:var(--head);font-size:clamp(30px,4vw,62px);line-height:.98;letter-spacing:-.055em;font-weight:900}
+    .quote-panel p{font-size:16px;color:#b7c8d6;font-weight:650;line-height:1.75}
+
+    .principles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px;align-items:start}
+    .note{min-height:220px;border:2px solid var(--ink);padding:22px;box-shadow:9px 10px 0 rgba(17,20,25,.16);position:relative;background:#fff071;transform:rotate(-1.2deg)}
+    .note:nth-child(2){background:#d9f4ff;transform:rotate(1.4deg);margin-top:28px}.note:nth-child(3){background:#dff7e7;transform:rotate(-2.2deg);margin-top:6px}.note:nth-child(4){background:#ffdcca;transform:rotate(2deg);margin-top:34px}
+    .note b{font-family:var(--head);font-size:30px;line-height:1;letter-spacing:-.045em;display:block;margin-bottom:14px}
+    .note p{font-family:var(--mono);font-size:12.5px;font-weight:700;line-height:1.55;color:#2f3540}
+
+    .map-section{background:var(--ink);color:var(--paper-2);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
+    .map-section::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0/40px 40px,linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0/40px 40px;opacity:.48}
+    .map-section .section{position:relative;z-index:2}
+    .map-section .kicker{color:#9de9ff}.map-section .kicker::before{background:#9de9ff}
+    .subhead{font-size:clamp(17px,2vw,21px);max-width:760px;color:rgba(255,248,233,.72);font-weight:650;margin-top:20px}
+    .build-map{margin-top:40px;display:grid;gap:18px;position:relative}
+    .build-map::before{content:"";position:absolute;left:22px;top:30px;bottom:30px;width:4px;background:linear-gradient(var(--blue),var(--orange));border-radius:999px}
+    .map-item{display:grid;grid-template-columns:68px minmax(0,1fr);gap:18px;align-items:stretch}
+    .pin{width:48px;height:48px;border:2px solid var(--paper-2);border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--blue);font-family:var(--mono);font-weight:900;z-index:2;box-shadow:0 0 0 8px var(--ink)}
+    .map-card{border:1px solid var(--line-dark);border-radius:22px;padding:20px 22px;background:rgba(255,248,233,.06);backdrop-filter:blur(8px);display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start}
+    .map-card time{font-family:var(--mono);font-weight:900;color:#9de9ff;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+    .map-card h3{font-family:var(--body);font-size:19px;letter-spacing:-.02em;line-height:1.2;margin-bottom:8px}
+    .map-card p{color:rgba(255,248,233,.72);font-weight:600}
+
+    .photo-strip{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:18px;margin-top:34px}
+    .strip-card{border:2px solid var(--ink);background:#fff;padding:12px;box-shadow:8px 10px 0 rgba(17,20,25,.12);transform:rotate(-1deg);position:relative}
+    .strip-card:nth-child(2){transform:rotate(2deg);margin-top:28px}.strip-card:nth-child(3){transform:rotate(-2.5deg);margin-top:12px}
+    .strip-card img{height:260px;width:100%;object-fit:cover}.strip-card:first-child img{height:340px}
+    .caption{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-top:10px;color:#4a5361}
+
+    .lab{display:grid;grid-template-columns:.95fr 1.05fr;gap:24px;margin-top:30px;align-items:start}
+    .lab-left{background:var(--paper-2);border:2px solid var(--ink);border-radius:28px;padding:28px;box-shadow:10px 12px 0 rgba(17,20,25,.12)}
+    .lab-left h3{margin-bottom:18px}.lab-left p{font-size:17px;color:#3b4654;font-weight:620;line-height:1.75}
+    .signal-list{display:grid;gap:12px}
+    .signal{display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;border:2px solid var(--ink);border-radius:18px;background:#fffaf0;padding:16px;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .signal span{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep)}
+    .signal b{font-size:17px;letter-spacing:-.02em}.signal p{font-size:14px;color:#576170;font-weight:600;margin-top:4px}
+
+
+
+    .tabs-board{margin-top:34px;display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+    .tabs-intro{background:var(--ink);color:var(--paper-2);border:2px solid var(--ink);border-radius:30px;padding:30px;box-shadow:12px 14px 0 var(--gold);position:relative;overflow:hidden}
+    .tabs-intro::after{content:"OPEN TABS";position:absolute;right:-16px;bottom:14px;font-family:var(--mono);font-size:42px;font-weight:900;letter-spacing:.08em;color:rgba(255,248,233,.07);transform:rotate(-8deg)}
+    .tabs-intro h3{font-size:clamp(34px,4vw,58px);margin-bottom:16px}.tabs-intro p{color:#c7d5df;font-weight:650;line-height:1.75;max-width:560px}
+    .tab-stack{display:grid;gap:12px}
+    .tab-card{border:2px solid var(--ink);border-radius:18px;background:var(--paper-2);padding:17px 18px;box-shadow:7px 8px 0 rgba(17,20,25,.11);display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;transform:rotate(-.4deg)}
+    .tab-card:nth-child(2n){transform:rotate(.45deg);background:#e9f8ff}.tab-card:nth-child(3n){background:#fff1d4}.tab-card:nth-child(4n){background:#efffed}
+    .tab-num{width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:900;font-size:12px;background:#fff}
+    .tab-card b{display:block;font-size:17px;letter-spacing:-.025em}.tab-card p{font-size:14px;color:#5b6471;font-weight:630;margin-top:3px}
+
+    .building-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
+    .build-tile{border:2px solid var(--ink);border-radius:22px;padding:18px;min-height:210px;background:#fffaf0;box-shadow:7px 8px 0 rgba(17,20,25,.12);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .build-tile::before{content:"";position:absolute;inset:auto 14px 14px auto;width:52px;height:52px;border:2px dashed rgba(17,20,25,.22);border-radius:50%;transform:rotate(15deg)}
+    .build-tile:nth-child(1){background:#e8f8ff}.build-tile:nth-child(2){background:#fff1d4}.build-tile:nth-child(3){background:#efffed}.build-tile:nth-child(4){background:#f5f0ff}.build-tile:nth-child(5){background:#ffdcca}
+    .build-tile span{font-family:var(--mono);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--blue-deep)}
+    .build-tile b{font-family:var(--head);font-size:30px;line-height:.98;letter-spacing:-.05em;display:block;margin:10px 0 12px}.build-tile p{font-size:14px;color:#4d5663;font-weight:650;line-height:1.55}
+
+    .receipts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:28px;margin-bottom:30px}
+    .receipt-chip{border:2px solid var(--ink);background:var(--paper-2);border-radius:18px;padding:16px;font-family:var(--mono);font-size:12px;font-weight:850;line-height:1.5;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .receipt-chip::before{content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;margin-right:6px;border-radius:50%;background:var(--green);border:2px solid var(--ink);font-weight:900;color:var(--ink)}
+
+    .log-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+    .log-card{border:2px solid var(--ink);border-radius:24px;background:var(--card);padding:22px;min-height:210px;box-shadow:8px 9px 0 rgba(17,20,25,.12);display:flex;flex-direction:column;justify-content:space-between}
+    .log-card:nth-child(2){background:#e8f8ff}.log-card:nth-child(3){background:#fff1d4}.log-card:nth-child(4){background:#efffed}.log-card:nth-child(5){background:#f5f0ff}.log-card:nth-child(6){background:#ffdcca}
+    .log-card span{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep)}
+    .log-card b{font-family:var(--head);font-size:34px;line-height:.98;letter-spacing:-.05em;display:block;margin-top:12px}.log-card p{font-size:14px;color:#56606d;font-weight:650;margin-top:14px;line-height:1.6}
+
+    .media-kit{border:2px solid var(--ink);border-radius:32px;background:linear-gradient(135deg,#fffaf0,#e8f8ff);padding:30px;box-shadow:12px 14px 0 rgba(17,20,25,.14);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;position:relative;overflow:hidden}
+    .media-kit::after{content:"MEDIA / BIO";position:absolute;right:-18px;top:18px;font-family:var(--mono);font-size:32px;font-weight:900;color:rgba(17,20,25,.07);transform:rotate(8deg)}
+    .media-kit h2{font-size:clamp(38px,5vw,70px)}.media-kit p{max-width:720px;color:#45505d;font-weight:650;line-height:1.75;margin-top:12px}.media-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:2}
+
+    .contact-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:start}
+    .contact-card{background:var(--ink);color:var(--paper-2);border-radius:30px;border:2px solid var(--ink);padding:30px;box-shadow:12px 14px 0 var(--orange);position:sticky;top:92px}
+    .contact-card h2{font-size:clamp(40px,5vw,68px)}
+    .contact-card p{margin-top:18px;color:#c8d7df;font-weight:650;line-height:1.75}
+    .contact-card .direct{margin-top:22px;display:grid;gap:10px;font-family:var(--mono);font-size:13px;font-weight:800;color:#9de9ff}
+    form{background:var(--paper-2);border:2px solid var(--ink);border-radius:30px;padding:28px;box-shadow:12px 14px 0 rgba(0,174,239,.32)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:8px}.field.full{grid-column:1/-1}
+    label{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.11em;color:#3f4854}
+    input,select,textarea{width:100%;border:2px solid var(--ink);border-radius:14px;padding:13px 14px;background:#fff;font:inherit;font-size:15px;color:var(--ink);outline:none;box-shadow:3px 3px 0 rgba(17,20,25,.1)}
+    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:4px 4px 0 rgba(0,174,239,.3)}
+    textarea{min-height:160px;resize:vertical}
+    .fine-print{font-size:12px;color:#626b78;margin:14px 0 0;font-weight:600}
+    .footer{border-top:2px solid var(--ink);background:var(--paper-2)}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:24px 20px;display:flex;justify-content:space-between;gap:18px;align-items:center;font-family:var(--mono);font-size:12px;font-weight:800;color:#4a5361;text-transform:uppercase;letter-spacing:.08em}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.on{opacity:1;transform:none}
+
+    @media (max-width:980px){
+      .hero,.manifesto,.quote-panel,.lab,.contact-wrap,.tabs-board,.media-kit{grid-template-columns:1fr}
+      .hero-board{min-height:600px;max-width:620px;width:100%;margin:0 auto}
+      .case-card:nth-child(n){grid-column:span 6}.building-grid{grid-template-columns:repeat(2,1fr)}.receipts-grid{grid-template-columns:repeat(2,1fr)}.log-grid{grid-template-columns:repeat(2,1fr)}.principles{grid-template-columns:repeat(2,1fr)}.photo-strip{grid-template-columns:1fr 1fr}.strip-card:first-child{grid-column:1/-1}.contact-card{position:relative;top:0}.map-card{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .nav-links{display:none;position:absolute;left:14px;right:14px;top:72px;background:var(--paper-2);border:2px solid var(--ink);border-radius:18px;padding:12px;box-shadow:10px 12px 0 rgba(17,20,25,.14);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links a{text-align:center}.menu-btn{display:inline-flex}.brand span:last-child{display:none}
+      .hero{padding-top:34px}.hero-board{min-height:540px}.photo-card{inset:44px 18px 88px 18px}.receipt{width:190px;right:4px}.console{width:280px}.postit{right:2px;bottom:18px;width:185px}.section{padding:66px 18px}.case-card:nth-child(n){grid-column:span 12}.building-grid,.receipts-grid,.log-grid{grid-template-columns:1fr}.media-actions{justify-content:flex-start}.principles{grid-template-columns:1fr}.note:nth-child(n){margin-top:0;transform:rotate(-.7deg)}.photo-strip{grid-template-columns:1fr}.strip-card:nth-child(n){margin-top:0;transform:rotate(-.7deg)}.form-grid{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start}h1{font-size:clamp(54px,17vw,88px)}
+    }
+    @media (max-width:500px){.hero-board{min-height:620px}.photo-card{inset:66px 10px 180px 10px}.receipt{left:8px;right:auto;top:0;transform:rotate(-3deg)}.console{left:5px;right:5px;width:auto;bottom:80px}.postit{bottom:0}.btn{width:100%}}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-frame">
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Logan Wease home"><span class="brand-stamp">LW</span><span>Logan Wease / working file</span></a>
+        <button class="menu-btn" type="button" aria-controls="navLinks" aria-expanded="false">Menu</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#open-tabs">Open tabs</a>
+          <a href="#now-building">Now building</a>
+          <a href="#case-files">Case files</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div>
+          <div class="kicker">Founder file 001</div>
+          <h1>Insurance operator. Systems builder. Problem collector.</h1>
+          <p class="hero-lede">I build insurance businesses, teams, practical tools, and training systems for the messy middle — the place where sales, service, compliance, technology, and real human problems all collide.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#case-files">Open the case files</a>
+            <a class="btn" href="#contact">Start a conversation</a>
+            <a class="btn btn-orange" href="logan-wease-short-bio.txt" download>Download bio</a>
+          </div>
+        </div>
+        <div class="hero-board" aria-label="Visual board with Logan Wease photo and notes">
+          <div class="file-tab">operator desk</div>
+          <div class="receipt"><strong><span class="dot"></span> Current status</strong>Building practical insurance tools, agency systems, agent training, web projects, and customer experiences that do not feel like they were designed by a committee of robots.</div>
+          <figure class="photo-card"><img src="assets/logan-seated.jpg" alt="Logan Wease seated at a desk" /></figure>
+          <div class="console" aria-label="Current operating log">
+            <div class="console-title"><span class="light"></span><span class="light"></span><span class="light"></span> operating log</div>
+            <code>&gt; build agency systems</code>
+            <code>&gt; simplify insurance language</code>
+            <code>&gt; train better producers</code>
+            <code>&gt; test useful web workflows</code>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker">
+          <span>Agency growth</span><span>Sales systems</span><span>Insurance training</span><span>Customer experience</span><span>Practical web tools</span><span>Operations</span><span>Small business tools</span><span>Agency growth</span><span>Sales systems</span><span>Insurance training</span><span>Customer experience</span><span>Practical web tools</span><span>Operations</span><span>Small business tools</span>
+        </div>
+      </div>
+
+      <section class="section tight reveal">
+        <div class="manifesto">
+          <div class="manifesto-title">
+            <div class="kicker">The short version</div>
+            <h2>I like building useful things in boring industries.</h2>
+            <p>Especially when the boring industry is actually important.</p>
+          </div>
+          <div class="manifesto-copy">
+            <p>Insurance is full of complicated forms, old workflows, confused customers, overwhelmed agents, and tools that somehow make the day harder. That is the kind of mess I like working on.</p>
+            <p class="small">My work is part agency building, part sales operations, part training, part technology experimentation, and part “there has to be a better way to do this.”</p>
+            <p class="small emphasis-line">Most of my best ideas start as messy problems customers, agents, or business owners keep running into over and over again.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="open-tabs">
+        <div class="kicker">Open tabs</div>
+        <h2>A few things currently taking up space in my head.</h2>
+        <div class="tabs-board">
+          <div class="tabs-intro">
+            <h3>Not all projects start polished.</h3>
+            <p>Some start as a half-annoying customer problem, a clunky workflow, a weird domain, or a note that says: “someone should make this easier.” Those are usually the tabs I leave open.</p>
+          </div>
+          <div class="tab-stack">
+            <div class="tab-card"><div class="tab-num">01</div><div><b>Making insurance less painful</b><p>Less jargon, fewer dead ends, better handoffs.</p></div></div>
+            <div class="tab-card"><div class="tab-num">02</div><div><b>Training better agents faster</b><p>Practical learning that works outside the exam room.</p></div></div>
+            <div class="tab-card"><div class="tab-num">03</div><div><b>Turning weird domains into useful businesses</b><p>Memorable names, simple funnels, real-world purpose.</p></div></div>
+            <div class="tab-card"><div class="tab-num">04</div><div><b>Lead funnels that do not suck</b><p>Clear promises, less friction, more trust.</p></div></div>
+            <div class="tab-card"><div class="tab-num">05</div><div><b>Small business tools</b><p>Calculators, templates, and workflows people actually use.</p></div></div>
+            <div class="tab-card"><div class="tab-num">06</div><div><b>Local business and community ideas</b><p>Practical fixes for problems people talk about but rarely build around.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="now-building">
+        <div class="kicker">Now building</div>
+        <h2>Current files on the desk.</h2>
+        <div class="building-grid">
+          <div class="build-tile"><div><span>Agency</span><b>We Insure Things</b><p>Modern insurance agency operations, customer experience, carrier strategy, and growth systems.</p></div></div>
+          <div class="build-tile"><div><span>Lead site</span><b>WeInsureShit.com</b><p>A blunt, trust-first insurance lead-matching experiment with humor and cleaner conversion flow.</p></div></div>
+          <div class="build-tile"><div><span>Education</span><b>Free license school</b><p>Insurance education tools that help people understand coverage instead of memorizing noise.</p></div></div>
+          <div class="build-tile"><div><span>Media</span><b>WIT Radio</b><p>Brand media experiments, show concepts, and insurance-adjacent content that is less boring.</p></div></div>
+          <div class="build-tile"><div><span>Operators</span><b>Business tools</b><p>Simple calculators, templates, and resources for small business owners who need clarity.</p></div></div>
+        </div>
+      </section>
+
+
+      <section class="section reveal" id="case-files">
+        <div class="kicker">Open case files</div>
+        <h2>Things I’m building, testing, or thinking through.</h2>
+        <div class="case-grid">
+          <article class="case-card"><span class="case-mark">01</span><div><div class="case-label">Agency build</div><h3>We Insure Things</h3><p>A modern insurance agency focused on making coverage easier to understand, faster to access, and less painful for customers and agents.</p></div><a href="https://weinsurethings.com" target="_blank" rel="noopener" class="btn">Visit site</a></article>
+          <article class="case-card"><span class="case-mark">02</span><div><div class="case-label">Education</div><h3>Insurance license training</h3><p>Free licensing and study tools designed to help new agents understand the material instead of just memorizing random exam questions.</p></div></article>
+          <article class="case-card"><span class="case-mark">03</span><div><div class="case-label">Tools + ops</div><h3>Better operator workflows</h3><p>Experiments around knowledge bases, cleaner handoffs, internal tools, customer communication, and less painful daily work.</p></div></article>
+          <article class="case-card"><span class="case-mark">04</span><div><div class="case-label">Lead experiments</div><h3>Unusual web projects</h3><p>Sites and funnels built around plain language, humor, and lower-friction insurance lead collection.</p></div></article>
+          <article class="case-card"><span class="case-mark">05</span><div><div class="case-label">Business tools</div><h3>Resources for operators</h3><p>Simple calculators, templates, and workflows for small businesses that need clarity more than complexity.</p></div></article>
+          <article class="case-card"><span class="case-mark">06</span><div><div class="case-label">Community</div><h3>Local ideas</h3><p>Projects and concepts around local business, community improvement, transportation, and practical public problem-solving.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section tight reveal">
+        <div class="quote-panel">
+          <blockquote>“The best systems feel obvious after someone finally builds them.”</blockquote>
+          <p>That is usually the goal: take something confusing, turn it into a process, make it repeatable, then make it easier for the next person. In insurance, that can mean a better sales script, a cleaner form, a smarter training tool, or a customer experience that does not require a dictionary.</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="principles">
+        <div class="kicker">Field notes</div>
+        <h2>Operating principles I keep coming back to.</h2>
+        <div class="principles">
+          <div class="note"><b>Make the complicated part visible.</b><p>If nobody can explain the bottleneck, nobody can fix it. Draw the messy process first.</p></div>
+          <div class="note"><b>Train the human, then improve the system.</b><p>Bad process plus new tools is just faster confusion. Fix the workflow before adding more layers.</p></div>
+          <div class="note"><b>Plain language wins.</b><p>Customers do not need insurance theater. They need clarity, options, and next steps.</p></div>
+          <div class="note"><b>Useful beats impressive.</b><p>The best business tools are the ones people actually use when the day gets busy.</p></div>
+        </div>
+      </section>
+
+      <section class="map-section" id="map">
+        <div class="section reveal">
+          <div class="kicker">Build map</div>
+          <h2>A career built in the field, not just on paper.</h2>
+          <p class="subhead">This is the résumé section, but rebuilt like a map: less corporate biography, more proof of what has been built and learned along the way.</p>
+          <div class="build-map">
+            <div class="map-item"><div class="pin">01</div><div class="map-card"><time>Early sales + leadership</time><div><h3>Learned the work close to the customer.</h3><p>Built a foundation in sales, service, team leadership, and the daily reality of helping people make decisions under pressure.</p></div></div></div>
+            <div class="map-item"><div class="pin">02</div><div class="map-card"><time>Agency growth</time><div><h3>Built and operated insurance businesses.</h3><p>Focused on hiring, training, sales systems, customer experience, carrier relationships, and operational discipline.</p></div></div></div>
+            <div class="map-item"><div class="pin">03</div><div class="map-card"><time>We Insure Things</time><div><h3>Founded a modern insurance agency.</h3><p>Built We Insure Things around broader access, digital-first workflows, practical advice, and a less painful customer experience.</p></div></div></div>
+            <div class="map-item"><div class="pin">04</div><div class="map-card"><time>Current experiments</time><div><h3>Combining insurance, education, web tools, and media experiments.</h3><p>Developing training tools, lead funnels, media concepts, and business resources that make insurance and operations easier.</p></div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="kicker">Receipts</div>
+        <h2>Proof without the corporate humblebrag fog.</h2>
+        <div class="receipts-grid">
+          <div class="receipt-chip">Built an independent insurance agency from scratch.</div>
+          <div class="receipt-chip">Created digital quote funnels and insurance web projects.</div>
+          <div class="receipt-chip">Built training systems for new and developing agents.</div>
+          <div class="receipt-chip">Led sales teams, hiring, operations, and customer growth.</div>
+          <div class="receipt-chip">Turned weird internet ideas into practical business assets.</div>
+        </div>
+        <div class="photo-strip">
+          <figure class="strip-card"><img src="assets/logan-headshot.png" alt="Logan Wease portrait" /><figcaption class="caption">Founder / operator</figcaption></figure>
+          <figure class="strip-card"><img src="assets/achievement-2019.jpg" alt="Achievement award from 2019" /><figcaption class="caption">Recognition archive</figcaption></figure>
+          <figure class="strip-card"><img src="assets/capital-region-2019.jpg" alt="Capital region recognition from 2019" /><figcaption class="caption">Agency growth years</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="section reveal" id="field-logs">
+        <div class="kicker">Field logs</div>
+        <h2>Notes I should probably turn into essays.</h2>
+        <div class="log-grid">
+          <article class="log-card"><span>Draft 01</span><div><b>Why most agency websites are boring</b><p>And what happens when you make the customer feel like a human instead of a form submission.</p></div></article>
+          <article class="log-card"><span>Draft 02</span><div><b>Training agents for the real conversation</b><p>The exam matters, but the customer conversation is where the work becomes real.</p></div></article>
+          <article class="log-card"><span>Draft 03</span><div><b>Lead sites without the bait-and-switch</b><p>How to collect leads transparently without selling people into the internet blender.</p></div></article>
+          <article class="log-card"><span>Draft 04</span><div><b>Small business owners need simpler tools</b><p>Most operators do not need more dashboards. They need clearer next steps.</p></div></article>
+          <article class="log-card"><span>Draft 05</span><div><b>Insurance is emotional before it is technical</b><p>People usually come to insurance because something changed, broke, grew, or scared them.</p></div></article>
+          <article class="log-card"><span>Draft 06</span><div><b>The weird idea folder</b><p>A place for concepts that sound ridiculous until the practical use shows up.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="kicker">The lab</div>
+        <h2>What I’m useful for.</h2>
+        <div class="lab">
+          <div class="lab-left">
+            <h3>Bring me the messy middle.</h3>
+            <p>I’m most useful when a business has motion but needs better systems: sales process, training, accountability, lead flow, customer communication, or technology that should make the work easier but currently does not.</p>
+          </div>
+          <div class="signal-list">
+            <div class="signal"><span>Agency</span><div><b>Growth and operations</b><p>Sales process, producer training, service workflows, accountability, and practical agency systems.</p></div></div>
+            <div class="signal"><span>Tech</span><div><b>Insurance tools and automation</b><p>Quote funnels, internal tools, knowledge bases, cleaner forms, and better customer handoffs.</p></div></div>
+            <div class="signal"><span>People</span><div><b>Training and communication</b><p>Making hard concepts easier to explain, teach, sell, and repeat.</p></div></div>
+            <div class="signal"><span>Ideas</span><div><b>Weird but practical projects</b><p>Concepts that are memorable, useful, and more human than the default industry version.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight reveal">
+        <div class="media-kit">
+          <div>
+            <div class="kicker">Media kit</div>
+            <h2>Need the polished version?</h2>
+            <p>The rest of this page is the working file. This is the clean drawer: short bio, project links, and a simple way to start a real conversation.</p>
+          </div>
+          <div class="media-actions">
+            <a class="btn btn-primary" href="logan-wease-short-bio.txt" download>Download short bio</a>
+            <a class="btn" href="#case-files">View projects</a>
+            <a class="btn btn-orange" href="#contact">Contact Logan</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="contact">
+        <div class="contact-wrap">
+          <aside class="contact-card">
+            <div class="kicker">Start here</div>
+            <h2>Got something worth building?</h2>
+            <p>Reach out about partnerships, consulting, insurance projects, speaking, web tools, media experiments, or ideas that need an operator’s brain.</p>
+            <div class="direct">
+              <a href="mailto:logan@weinsurethings.com">logan@weinsurethings.com</a>
+              <a href="https://weinsurethings.com" target="_blank" rel="noopener">weinsurethings.com</a>
+            </div>
+          </aside>
+          <form name="logan-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thank-you.html">
+            <input type="hidden" name="form-name" value="logan-contact" />
+            <p style="display:none"><label>Do not fill this out: <input name="bot-field" /></label></p>
+            <div class="form-grid">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
+              <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" required /></div>
+              <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
+              <div class="field"><label for="reason">Reason</label><select id="reason" name="reason"><option>Partnership</option><option>Consulting</option><option>Speaking</option><option>Insurance project</option><option>Technology idea</option><option>General</option></select></div>
+              <div class="field full"><label for="message">What are you working on?</label><textarea id="message" name="message" placeholder="Give me the messy version. The polished version can come later." required></textarea></div>
+            </div>
+            <button class="btn btn-primary" type="submit" style="margin-top:18px">Send the note</button>
+            <p class="fine-print">This form is for real conversations, not newsletter spam. Your message goes where it needs to go: to Logan.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner"><span>© <span id="year"></span> Logan Wease</span><span>Founder file / version 003</span></div>
+    </footer>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const links = document.querySelector('#navLinks');
+    if(btn && links){
+      btn.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+      }));
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('on'); observer.unobserve(entry.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
