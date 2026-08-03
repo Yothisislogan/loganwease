@@ -31,3 +31,9 @@ Version 005 (real numbers pass, sourced from the previous loganwease.com site):
 - Receipts section now leads with a hard-number stat row ($2.8M→$7.6M, 15%→27% close rate, top-3% Allstate ranking, ~1,300-agent keynote) and specific proof chips.
 - Build map rebuilt with the real career timeline: retail/ops (2001–2012, Aramark), State Farm and life production (2012–2014), Wease Financial (2014–2021, grown and sold), We Insure Things, current experiments.
 - Short bio expanded with the Wease Financial track record; JSON-LD gains alumniOf.
+
+Version 006 (thoughts page):
+- New `/thoughts/` section — Substack-clean reading layout (680px measure, serif body, minimal chrome) that still lives in the working-file universe (LW stamp, mono labels, sticky-note draft chips).
+- `thoughts/index.html`: post list with one published field log and five drafts, plus a Netlify email-subscribe form (`thoughts-subscribe`).
+- `thoughts/insurance-is-emotional.html`: first essay ("Insurance is emotional before it is technical") — a starter draft assembled from positions already published on the site; Logan should edit before treating it as final.
+- Homepage: "Thoughts" nav link; Field Logs section reordered with the published log linking out and a CTA to the thoughts page.

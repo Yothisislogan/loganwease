@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thoughts | Logan Wease</title>
+  <meta name="description" content="Field logs from the messy middle of insurance — plain language, real problems, no theater. Notes and essays by Logan Wease." />
+  <meta property="og:title" content="Thoughts | Logan Wease" />
+  <meta property="og:description" content="Field logs from the messy middle of insurance — plain language, real problems, no theater." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://loganwease.com/thoughts/" />
+  <meta property="og:image" content="https://loganwease.com/assets/logan-seated.jpg" />
+  <meta name="theme-color" content="#fdf9ef" />
+  <link rel="canonical" href="https://loganwease.com/thoughts/" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111419;
+      --ink-soft:#3d4653;
+      --muted:#79818d;
+      --paper:#fdf9ef;
+      --line:rgba(17,20,25,.14);
+      --blue:#00AEEF;
+      --blue-deep:#0078a7;
+      --orange:#ff8a3d;
+      --head:'Fraunces', Georgia, serif;
+      --mono:'IBM Plex Mono', ui-monospace, monospace;
+      --ui:'Inter', system-ui, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:680px;margin:0 auto;padding:0 22px}
+
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:#fff8e9;font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    .hero{padding:64px 0 40px}
+    h1{margin:0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:1;font-size:clamp(44px,8vw,60px)}
+    .dek{font-size:19px;color:var(--ink-soft);margin:18px 0 0;max-width:560px;line-height:1.55}
+
+    .subscribe{margin:34px 0 0;border:2px solid var(--ink);border-radius:14px;background:#fff8e9;padding:18px;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .subscribe form{display:flex;gap:10px;flex-wrap:wrap}
+    .subscribe input{flex:1;min-width:200px;border:2px solid var(--ink);border-radius:10px;padding:12px 14px;font:inherit;font-size:15px;background:#fff}
+    .subscribe button{border:2px solid var(--ink);border-radius:10px;padding:12px 18px;background:var(--ink);color:#fff8e9;font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:4px 4px 0 var(--orange)}
+    .subscribe button:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--orange)}
+    .subscribe p{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+
+    .posts{padding:26px 0 40px}
+    .post{display:block;padding:30px 0;border-bottom:1px solid var(--line)}
+    .post-meta{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .post h2{margin:10px 0 8px;font-family:var(--head);font-weight:900;letter-spacing:-.035em;line-height:1.12;font-size:clamp(24px,4.4vw,31px)}
+    .post p{margin:0;font-size:16.5px;color:var(--ink-soft);line-height:1.6}
+    .read-cue{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-deep)}
+    a.post:hover h2{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+    a.post:hover .read-cue{transform:translateX(3px)}
+    .chip{display:inline-block;border:1.5px solid var(--ink);border-radius:999px;padding:2px 9px;font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:#fff071;color:var(--ink);transform:rotate(-1deg)}
+    .post.draft h2{color:#5a6371}
+    .post.draft p{color:#8a919c}
+
+    .foot{border-top:1px solid var(--line)}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Thoughts home"><span class="brand-stamp">LW</span><span>Logan Wease / thoughts</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="../">Working file</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Thoughts.</h1>
+        <p class="dek">Field logs from the messy middle of insurance &mdash; plain language, real problems, no theater. Notes land here first, before they become anything official.</p>
+        <div class="subscribe">
+          <form name="thoughts-subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="../thank-you.html">
+            <input type="hidden" name="form-name" value="thoughts-subscribe" />
+            <p style="display:none"><label>Do not fill this out: <input name="bot-field" /></label></p>
+            <label for="sub-email" style="position:absolute;left:-999px">Email address</label>
+            <input id="sub-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button type="submit">Get new notes</button>
+          </form>
+          <p>Occasional useful things, written by a human. No newsletter blender.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="posts">
+      <div class="wrap">
+        <a class="post" href="insurance-is-emotional.html">
+          <div class="post-meta"><span>Field log 01</span><span>&middot;</span><time datetime="2026-08-03">Aug 3, 2026</time><span>&middot;</span><span>3 min read</span></div>
+          <h2>Insurance is emotional before it is technical</h2>
+          <p>People usually come to insurance because something changed, broke, grew, or scared them. The paperwork should come second.</p>
+          <span class="read-cue">Read &rarr;</span>
+        </a>
+
+        <div class="post draft">
+          <div class="post-meta"><span>Field log 02</span><span>&middot;</span><span class="chip">In draft</span></div>
+          <h2>Training agents for the real conversation</h2>
+          <p>The exam matters, but the customer conversation is where the work becomes real.</p>
+        </div>
+
+        <div class="post draft">
+          <div class="post-meta"><span>Field log 03</span><span>&middot;</span><span class="chip">In draft</span></div>
+          <h2>Why most agency websites are boring</h2>
+          <p>And what happens when you make the customer feel like a human instead of a form submission.</p>
+        </div>
+
+        <div class="post draft">
+          <div class="post-meta"><span>Field log 04</span><span>&middot;</span><span class="chip">In draft</span></div>
+          <h2>Lead sites without the bait-and-switch</h2>
+          <p>How to collect leads transparently without selling people into the internet blender.</p>
+        </div>
+
+        <div class="post draft">
+          <div class="post-meta"><span>Field log 05</span><span>&middot;</span><span class="chip">In draft</span></div>
+          <h2>Small business owners need simpler tools</h2>
+          <p>Most operators do not need more dashboards. They need clearer next steps.</p>
+        </div>
+
+        <div class="post draft" style="border-bottom:none">
+          <div class="post-meta"><span>Field log 06</span><span>&middot;</span><span class="chip">In draft</span></div>
+          <h2>The weird idea folder</h2>
+          <p>A place for concepts that sound ridiculous until the practical use shows up.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="../">Back to the working file</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

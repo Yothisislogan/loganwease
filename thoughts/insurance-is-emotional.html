@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Insurance is emotional before it is technical | Logan Wease</title>
+  <meta name="description" content="People usually come to insurance because something changed, broke, grew, or scared them. The paperwork should come second." />
+  <meta property="og:title" content="Insurance is emotional before it is technical" />
+  <meta property="og:description" content="People usually come to insurance because something changed, broke, grew, or scared them. The paperwork should come second." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://loganwease.com/thoughts/insurance-is-emotional.html" />
+  <meta property="og:image" content="https://loganwease.com/assets/logan-seated.jpg" />
+  <meta property="article:author" content="Logan Wease" />
+  <meta property="article:published_time" content="2026-08-03" />
+  <meta name="theme-color" content="#fdf9ef" />
+  <link rel="canonical" href="https://loganwease.com/thoughts/insurance-is-emotional.html" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111419;
+      --ink-soft:#3d4653;
+      --muted:#79818d;
+      --paper:#fdf9ef;
+      --line:rgba(17,20,25,.14);
+      --blue:#00AEEF;
+      --blue-deep:#0078a7;
+      --orange:#ff8a3d;
+      --head:'Fraunces', Georgia, serif;
+      --mono:'IBM Plex Mono', ui-monospace, monospace;
+      --ui:'Inter', system-ui, sans-serif;
+      --body:Georgia, 'Times New Roman', serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:680px;margin:0 auto;padding:0 22px}
+
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:#fff8e9;font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    article{padding:56px 0 30px}
+    .post-meta{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    h1{margin:14px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.04em;line-height:1.05;font-size:clamp(34px,6.5vw,48px)}
+    .dek{font-size:20px;color:var(--ink-soft);margin:16px 0 0;line-height:1.5}
+    .rule{border:none;border-top:1px solid var(--line);margin:34px 0}
+
+    .prose{font-family:var(--body);font-size:19px;line-height:1.75;color:#20252d}
+    .prose p{margin:0 0 26px}
+    .prose h2{font-family:var(--head);font-weight:900;letter-spacing:-.03em;font-size:27px;line-height:1.15;margin:40px 0 14px}
+    .prose .pull{border-left:4px solid var(--blue);padding:6px 0 6px 22px;margin:34px 0;font-family:var(--head);font-weight:700;font-size:24px;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
+    .sig{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink-soft);margin-top:34px}
+
+    .reply{margin:44px 0 0;border:2px solid var(--ink);border-radius:14px;background:#fff8e9;padding:22px;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .reply b{display:block;font-family:var(--head);font-weight:900;font-size:22px;letter-spacing:-.02em;margin-bottom:8px}
+    .reply p{margin:0 0 16px;font-size:15.5px;color:var(--ink-soft)}
+    .btn{display:inline-block;border:2px solid var(--ink);border-radius:10px;padding:12px 18px;background:var(--ink);color:#fff8e9;font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;box-shadow:4px 4px 0 var(--orange)}
+    .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--orange)}
+    .btn.alt{background:#fff8e9;color:var(--ink);box-shadow:4px 4px 0 var(--blue)}
+
+    .pager{padding:34px 0 10px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-deep)}
+    .pager a:hover{text-decoration:underline;text-underline-offset:4px}
+
+    .foot{border-top:1px solid var(--line);margin-top:26px}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Thoughts home"><span class="brand-stamp">LW</span><span>Logan Wease / thoughts</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="./">All thoughts</a>
+        <a href="../">Working file</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="wrap">
+        <div class="post-meta"><span>Field log 01</span><span>&middot;</span><time datetime="2026-08-03">Aug 3, 2026</time><span>&middot;</span><span>3 min read</span></div>
+        <h1>Insurance is emotional before it is technical</h1>
+        <p class="dek">People usually come to insurance because something changed, broke, grew, or scared them. The paperwork should come second.</p>
+        <hr class="rule" />
+        <div class="prose">
+          <p>Nobody wakes up excited to buy insurance. There is always a reason, and the reason is almost never &ldquo;I love comparing deductibles.&rdquo; Somebody bought a house. Somebody had a kid. Somebody started a business, or watched a neighbor&rsquo;s kitchen burn, or got a letter from a lender they did not fully understand. Something changed, broke, grew, or scared them &mdash; and now they are on the phone with you.</p>
+          <p>That means the person asking about coverage is not really asking about coverage. They are asking a much older question: <em>am I okay? Is my family okay? Did I just make a mistake I can&rsquo;t see yet?</em></p>
+          <p>The industry&rsquo;s standard answer to that question is a stack of documents, a wall of jargon, and a quote with numbers on it that nobody explains. I call this insurance theater: everything looks official, everyone sounds professional, and the customer walks away just as confused as they arrived &mdash; only now they are also insured, which somehow makes the confusion feel more expensive.</p>
+          <div class="pull">The technical answer matters. It just isn&rsquo;t allowed to go first.</div>
+          <p>When the emotional question gets answered first, everything downstream gets easier. Answer it plainly: here is what you are protected against, here is what you are not, here is what it costs, and here is exactly what to do next. Four sentences. If an agent cannot deliver those four sentences without a script, that is not the agent&rsquo;s failure &mdash; it is a training failure, and it is fixable.</p>
+          <p>This is also why I think plain language is not a style preference. It is the product. A policy someone does not understand protects them less than the same policy explained well, because the understanding is what changes their decisions: the coverage they add before the storm, the call they make before the gap becomes a claim, the question they feel allowed to ask. Clarity, options, next steps. That is the job.</p>
+          <p>The exam teaches the technical part, and the technical part matters &mdash; get it wrong and real people get hurt. But the work becomes real in the conversation, and the conversation is emotional before it is technical. Train for that order, and the metrics everyone stares at &mdash; close rates, retention, referrals &mdash; have a way of taking care of themselves.</p>
+          <p>The best compliment in this business is not &ldquo;great rate.&rdquo; It is &ldquo;oh &mdash; that finally makes sense.&rdquo;</p>
+          <p class="sig">&mdash; Logan</p>
+        </div>
+
+        <div class="reply">
+          <b>Got a messy insurance story?</b>
+          <p>Send me the messy version. The polished version can come later.</p>
+          <a class="btn" href="../#contact">Send a note</a>
+          <a class="btn alt" href="./" style="margin-left:8px">All thoughts</a>
+        </div>
+      </div>
+    </article>
+
+    <nav class="pager" aria-label="Post navigation">
+      <div class="wrap" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%">
+        <a href="./">&larr; All thoughts</a>
+        <span style="color:var(--muted)">Next log: in draft</span>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="../">Back to the working file</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
