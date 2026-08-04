@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bio | Logan Wease</title>
+  <meta name="description" content="Short bio for Logan Wease — insurance founder, operator, and builder. Founder of We Insure Things; previously built and sold Wease Financial, an Allstate agency." />
+  <meta property="og:title" content="Bio | Logan Wease" />
+  <meta property="og:description" content="Short bio for Logan Wease — insurance founder, operator, and builder." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://loganwease.com/bio.html" />
+  <meta property="og:image" content="https://loganwease.com/assets/logan-headshot.png" />
+  <meta name="theme-color" content="#fdf9ef" />
+  <link rel="canonical" href="https://loganwease.com/bio.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111419;
+      --ink-soft:#3d4653;
+      --muted:#79818d;
+      --paper:#fdf9ef;
+      --line:rgba(17,20,25,.14);
+      --blue:#00AEEF;
+      --blue-deep:#0078a7;
+      --orange:#ff8a3d;
+      --head:'Fraunces', Georgia, serif;
+      --mono:'IBM Plex Mono', ui-monospace, monospace;
+      --ui:'Inter', system-ui, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:#fff8e9;font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    .bio-head{padding:54px 0 8px}
+    .bio-head .wrap{display:grid;grid-template-columns:1fr 168px;gap:28px;align-items:start}
+    .kicker{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep)}
+    h1{margin:12px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:1;font-size:clamp(42px,7.5vw,58px)}
+    .role{font-size:18px;color:var(--ink-soft);margin:14px 0 0;font-weight:600}
+    .headshot{border:2px solid var(--ink);background:#fff;padding:8px;box-shadow:8px 9px 0 rgba(17,20,25,.14);transform:rotate(2deg)}
+    .headshot img{display:block;width:100%;height:auto}
+
+    .prose{padding:26px 0 8px;font-size:17.5px;line-height:1.75;color:#252b34}
+    .prose p{margin:0 0 20px;max-width:640px}
+
+    .facts{border:2px solid var(--ink);border-radius:14px;background:#fff8e9;padding:20px 22px;margin:16px 0 8px;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .facts b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--blue-deep);margin-bottom:12px}
+    .facts ul{margin:0;padding:0 0 0 18px;font-size:15.5px;color:var(--ink-soft);line-height:1.75}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;padding:26px 0 10px}
+    .btn{display:inline-block;border:2px solid var(--ink);border-radius:10px;padding:12px 18px;background:var(--ink);color:#fff8e9;font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;box-shadow:4px 4px 0 var(--orange);cursor:pointer}
+    .btn.alt{background:#fff8e9;color:var(--ink);box-shadow:4px 4px 0 var(--blue)}
+    .btn:hover{transform:translate(-1px,-1px)}
+    .plain{font-family:var(--mono);font-size:12px;color:var(--muted);padding-bottom:8px}
+    .plain a{text-decoration:underline;text-underline-offset:3px}
+
+    .foot{border-top:1px solid var(--line);margin-top:30px}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    @media (max-width:600px){.bio-head .wrap{grid-template-columns:1fr}.headshot{max-width:190px}}
+    @media print{
+      .topbar,.actions,.plain,.foot{display:none}
+      body{background:#fff}
+      .bio-head{padding-top:10px}
+      .headshot,.facts{box-shadow:none}
+      .prose{font-size:13.5pt}
+    }
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Logan Wease home"><span class="brand-stamp">LW</span><span>Logan Wease / bio</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="./">Working file</a>
+        <a href="thoughts/">Thoughts</a>
+        <a href="./#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="bio-head">
+      <div class="wrap">
+        <div>
+          <div class="kicker">The clean drawer / short bio</div>
+          <h1>Logan Wease</h1>
+          <p class="role">Insurance founder, operator, and builder. Founder of We Insure Things.</p>
+        </div>
+        <figure class="headshot"><img src="assets/logan-headshot.png" alt="Logan Wease portrait" width="351" height="399" /></figure>
+      </div>
+    </section>
+
+    <section class="prose">
+      <div class="wrap">
+        <p>Logan Wease is an insurance founder, operator, and builder focused on making complicated insurance and business systems easier to understand, sell, train, and operate. He is the founder of We Insure Things and works across agency growth, sales systems, training, customer experience, technology, and practical web workflows.</p>
+        <p>Before We Insure Things, Logan built Wease Financial, an Allstate agency in Williamsburg, Virginia &mdash; growing sales from $2.8M to $7.6M through three acquisitions, earning top-3% recognition among Allstate agencies nationwide, and selling the agency profitably in 2021. The hiring and training systems he developed there were adopted as best practice by agencies across the country, and he has keynoted a national forum of roughly 1,300 agents.</p>
+        <p>His work centers on building useful tools, stronger teams, and more human customer experiences in industries that often make simple things feel harder than they should.</p>
+        <div class="facts">
+          <b>Fast facts</b>
+          <ul>
+            <li>Founder, We Insure Things &mdash; weinsurethings.com</li>
+            <li>Built and sold Wease Financial (Allstate), 2014&ndash;2021: $2.8M &rarr; $7.6M in sales</li>
+            <li>Top-3% Allstate agency nationwide; Capital Region Honor Ring</li>
+            <li>Keynote speaker, national forum of ~1,300 agents</li>
+            <li>Writes field logs at loganwease.com/thoughts</li>
+            <li>Contact: logan@weinsurethings.com</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="actions">
+          <button class="btn" type="button" onclick="window.print()">Print / save as PDF</button>
+          <a class="btn alt" href="./#contact">Contact Logan</a>
+        </div>
+        <p class="plain">Need it raw? <a href="logan-wease-short-bio.txt" download>Download the plain-text version</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="./">Back to the working file</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
