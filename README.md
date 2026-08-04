@@ -68,7 +68,14 @@ form attributes and will NOT submit on plain nginx — POSTs to static files
 return 405. Options: point them at a form endpoint (e.g. Formspree/Web3Forms)
 or add a tiny handler on the server. Suggested nginx config additions:
   error_page 404 /404.html;
-  location ~* \.html$ { add_header Cache-Control "public, max-age=300"; }
-  location /assets/ { add_header Cache-Control "public, max-age=2592000"; }
-(The current 7-day cache on HTML means deploys take up to a week to appear for
-returning visitors.)
+  # HTML: revalidate every visit so webhook deploys appear immediately
+  # (repeat views are cheap 304s via ETag/Last-Modified)
+  location ~* \.html$ { expires -1; add_header Cache-Control "no-cache"; }
+  # Fonts, images, PDFs: cache long
+  location /assets/ { expires 30d; add_header Cache-Control "public, max-age=2592000"; }
+CACHE WARNING: as of Aug 2026 the live server sends
+"Cache-Control: max-age=604800, public" on HTML — browsers hold the old page
+for up to 7 days without re-requesting, which makes webhook deploys look like
+they never happened. Remove the 7-day expires/add_header for HTML (grep
+/etc/nginx for "expires") and reload nginx. Visitors who cached the old page
+before the fix will age out within a week; hard-refresh to verify sooner.
