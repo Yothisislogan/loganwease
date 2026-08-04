@@ -9,15 +9,17 @@
   <meta property="og:description" content="A personal site for Logan Wease: founder, insurance operator, and builder of practical systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://loganwease.com/" />
-  <meta property="og:image" content="https://loganwease.com/assets/logan-seated.jpg" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Logan Wease | Founder, Operator, Builder" />
   <meta name="twitter:description" content="A personal site for Logan Wease: founder, insurance operator, and builder of practical systems." />
-  <meta name="twitter:image" content="https://loganwease.com/assets/logan-seated.jpg" />
+  <meta name="twitter:image" content="https://loganwease.com/assets/og-card.jpg" />
   <meta name="theme-color" content="#f3ead8" />
   <link rel="canonical" href="https://loganwease.com/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,10 +42,14 @@
     "description": "Insurance founder and operator building agencies, teams, training systems, and practical business tools."
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/fraunces-var.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/inter-var.woff2">
   <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/plexmono-400.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(assets/fonts/inter-var.woff2) format('woff2')}
     :root{
       --ink:#111419;
       --ink-2:#2d3440;
@@ -356,6 +362,67 @@
     }
     @media (max-width:500px){.hero-board{min-height:620px}.photo-card{inset:66px 10px 180px 10px}.receipt{left:8px;right:auto;top:62px;transform:rotate(-3deg)}.console{left:5px;right:5px;width:auto;bottom:80px}.postit{bottom:0}.btn{width:100%}}
     @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,html.js .reveal:not(.on){opacity:1;transform:none}}
+
+    /* Desk lamp toggle */
+    .lamp-btn{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);border-radius:999px;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:3px 3px 0 var(--gold);flex:none}
+    .lamp-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--gold)}
+
+    /* After hours: the desk with the lights off. Paper stays lit; the room goes dark. */
+    html.dark body{
+      color:var(--paper);
+      background:
+        linear-gradient(90deg, rgba(255,248,233,.045) 1px, transparent 1px) 0 0/34px 34px,
+        linear-gradient(rgba(255,248,233,.03) 1px, transparent 1px) 0 0/34px 34px,
+        radial-gradient(circle at 16% 4%, rgba(240,196,82,.13), transparent 26rem),
+        radial-gradient(circle at 85% 12%, rgba(0,174,239,.1), transparent 25rem),
+        linear-gradient(180deg, #0a1420 0%, #0d1826 55%, #0a1220 100%);
+    }
+    html.dark body::before{opacity:.1}
+    html.dark .site-frame{border-color:rgba(255,248,233,.07)}
+    html.dark .topbar{background:rgba(10,20,32,.86);border-bottom-color:rgba(255,248,233,.16)}
+    html.dark .brand{color:var(--paper)}
+    html.dark .nav-links{color:#cfd9e2}
+    html.dark .nav-links a:hover{background:rgba(255,248,233,.06);border-color:rgba(255,248,233,.22)}
+    html.dark .menu-btn{background:#0d1a2a;color:var(--paper);border-color:rgba(255,248,233,.4)}
+    html.dark .nav-links .nav-cta{border-color:rgba(255,248,233,.45)}
+    html.dark .lamp-btn{background:#0d1a2a;color:var(--gold);border-color:rgba(255,248,233,.4);box-shadow:3px 3px 0 var(--blue)}
+    html.dark .hero-lede{color:#c4cfd9}
+    html.dark .section-sub{color:#aab6c2}
+    html.dark .kicker{color:#9de9ff}html.dark .kicker::before{background:#9de9ff}
+    html.dark .media-kit .kicker{color:var(--blue-deep)}html.dark .media-kit .kicker::before{background:var(--blue-deep)}
+    html.dark .hero::after{color:rgba(255,248,233,.18)}
+    html.dark .caption{color:#a7b2bd}
+    html.dark .footer{background:#0c1725;border-top-color:rgba(255,248,233,.16)}
+    html.dark .footer-inner{color:#aab6c2}
+    html.dark .footer-links a:hover{color:var(--paper)}
+    html.dark :is(.case-card,.note,.manifesto-copy,.lab-left,.signal,.stat,.receipt-chip,.community-note,.log-card,.media-kit,.strip-card,.receipt,.postit,.file-tab,.brand-stamp,.contact-wrap form){color:var(--ink)}
+    html.dark .btn{color:var(--ink)}
+    html.dark .btn-primary{color:var(--paper-2)}
+    html.dark #principles::after{color:rgba(255,248,233,.24)}
+    html.dark #case-files::after{border-color:rgba(240,196,82,.16)}
+    html.dark a:focus-visible,html.dark button:focus-visible{outline-color:#9de9ff}
+    @media (max-width:760px){
+      html.dark .nav-links{background:#0d1a2a;border-color:rgba(255,248,233,.3);color:#e8eef4}
+    }
+
+    /* Case-file folder dialog */
+    .case-dialog{border:none;padding:0;background:transparent;max-width:min(680px,94vw);width:100%;overflow:visible}
+    .case-dialog::backdrop{background:rgba(7,12,20,.66);backdrop-filter:blur(3px)}
+    .folder{position:relative;background:#ecd393;border:2px solid var(--ink);border-radius:0 16px 16px 16px;box-shadow:16px 18px 0 rgba(0,0,0,.35);margin-top:34px}
+    .folder-tab{position:absolute;top:-36px;left:-2px;background:#ecd393;border:2px solid var(--ink);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 18px;font-family:var(--mono);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+    .folder-stamp{position:absolute;right:20px;top:-16px;border:3px solid var(--ink);border-radius:8px;padding:6px 14px;font-family:var(--mono);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;transform:rotate(6deg);box-shadow:4px 4px 0 rgba(17,20,25,.25)}
+    .folder-paper{margin:18px;background:var(--paper-2);border:2px solid var(--ink);border-radius:12px;padding:26px;color:var(--ink)}
+    .folder-paper .kicker{margin-bottom:10px}
+    .folder-paper h3{font-size:clamp(30px,4.5vw,44px);margin-bottom:14px;overflow-wrap:anywhere}
+    .folder-paper p{color:#3b4654;font-weight:600;line-height:1.7;margin-bottom:14px}
+    .folder-next{background:#fff071;border:2px solid var(--ink);padding:14px 16px;transform:rotate(-1deg);box-shadow:5px 6px 0 rgba(17,20,25,.15);font-family:var(--mono);font-size:12.5px;font-weight:800;line-height:1.5;margin:20px 0 4px;max-width:440px}
+    .folder-next b{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--blue-deep);margin-bottom:5px}
+    .folder-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .folder-close{position:absolute;right:14px;top:14px;border:2px solid var(--red);color:var(--red);background:var(--paper-2);border-radius:8px;padding:7px 12px;font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transform:rotate(2deg)}
+    .folder-close:hover{background:var(--red);color:#fff}
+    @keyframes fileopen{from{transform:translateY(28px) rotate(-2deg) scale(.95);opacity:0}to{transform:none;opacity:1}}
+    .case-dialog[open] .folder{animation:fileopen .32s cubic-bezier(.2,1.2,.4,1)}
+    .case-open{margin-top:16px;align-self:flex-start}
   </style>
 </head>
 <body>
@@ -371,6 +438,7 @@
           <a href="thoughts/">Thoughts</a>
           <a href="#contact" class="nav-cta">Contact</a>
         </div>
+        <button class="lamp-btn" type="button" id="lampBtn" aria-label="Turn the desk lamp off" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1.3 1.5 1.5 2.5h5c.2-1 .7-1.8 1.5-2.5A6 6 0 0 0 12 3z"/></svg></button>
       </nav>
     </header>
 
@@ -389,7 +457,7 @@
         <div class="hero-board" aria-label="Visual board with Logan Wease photo and notes">
           <div class="file-tab">operator desk</div>
           <div class="receipt"><strong><span class="dot"></span> On the desk &middot; Aug 3, 2026</strong>Shipped the <a href="thoughts/" style="text-decoration:underline;text-underline-offset:3px">/thoughts</a> page. Field log 01 &mdash; &ldquo;Insurance is emotional before it is technical&rdquo; &mdash; is live. Next up: field log 02.</div>
-          <figure class="photo-card"><img src="assets/logan-seated.jpg" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" /></figure>
+          <figure class="photo-card"><img src="assets/logan-seated.jpg" srcset="assets/logan-seated-800.jpg 800w, assets/logan-seated.jpg 1200w" sizes="(max-width: 980px) 92vw, 560px" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" /></figure>
           <div class="console" aria-label="Interactive operating log terminal">
             <div class="console-title"><span class="light"></span><span class="light"></span><span class="light"></span> operating log</div>
             <div id="termOut" aria-live="polite">
@@ -429,12 +497,12 @@
         <h2>Things I’m building, testing, or thinking through.</h2>
         <p class="section-sub">Some of these started as a half-annoying customer problem, a clunky workflow, or a weird domain someone should have bought. These are the tabs I keep open.</p>
         <div class="case-grid">
-          <article class="case-card"><span class="case-mark">01</span><div><div class="case-label">Agency build <em class="st-active">Active</em></div><h3>We Insure Things</h3><p>A modern insurance agency focused on making coverage easier to understand, faster to access, and less painful for customers and agents.</p></div><a href="https://weinsurethings.com" target="_blank" rel="noopener" class="btn">Visit site</a></article>
-          <article class="case-card"><span class="case-mark">02</span><div><div class="case-label">Lead site <em class="st-exp">Experiment</em></div><h3>WeInsureShit<wbr />.com</h3><p>A blunt, trust-first lead-matching experiment: plain language, clear promises, less friction, and humor that earns trust instead of clicks.</p></div></article>
-          <article class="case-card"><span class="case-mark">03</span><div><div class="case-label">Education <em class="st-build">Building</em></div><h3>Free license school</h3><p>Free licensing and study tools that help new agents understand the material instead of memorizing random exam questions.</p></div></article>
-          <article class="case-card"><span class="case-mark">04</span><div><div class="case-label">Media <em class="st-exp">Experiment</em></div><h3>WIT Radio</h3><p>Brand media experiments, show concepts, and insurance-adjacent content that is less boring.</p></div></article>
-          <article class="case-card"><span class="case-mark">05</span><div><div class="case-label">Tools + ops <em class="st-build">Building</em></div><h3>Tools for operators</h3><p>Simple calculators, templates, knowledge bases, and cleaner handoffs for small businesses and agency teams that need clarity more than complexity.</p></div></article>
-          <article class="case-card"><span class="case-mark">06</span><div><div class="case-label">Community <em class="st-idea">Idea folder</em></div><h3>Local ideas</h3><p>Projects and concepts around local business, community improvement, transportation, and practical public problem-solving.</p></div></article>
+          <article class="case-card"><span class="case-mark">01</span><div><div class="case-label">Agency build <em class="st-active">Active</em></div><h3>We Insure Things</h3><p>A modern insurance agency focused on making coverage easier to understand, faster to access, and less painful for customers and agents.</p></div><button type="button" class="btn case-open" data-case="wit">Open the file</button></article>
+          <article class="case-card"><span class="case-mark">02</span><div><div class="case-label">Lead site <em class="st-exp">Experiment</em></div><h3>WeInsureShit<wbr />.com</h3><p>A blunt, trust-first lead-matching experiment: plain language, clear promises, less friction, and humor that earns trust instead of clicks.</p></div><button type="button" class="btn case-open" data-case="wis">Open the file</button></article>
+          <article class="case-card"><span class="case-mark">03</span><div><div class="case-label">Education <em class="st-build">Building</em></div><h3>Free license school</h3><p>Free licensing and study tools that help new agents understand the material instead of memorizing random exam questions.</p></div><button type="button" class="btn case-open" data-case="school">Open the file</button></article>
+          <article class="case-card"><span class="case-mark">04</span><div><div class="case-label">Media <em class="st-exp">Experiment</em></div><h3>WIT Radio</h3><p>Brand media experiments, show concepts, and insurance-adjacent content that is less boring.</p></div><button type="button" class="btn case-open" data-case="radio">Open the file</button></article>
+          <article class="case-card"><span class="case-mark">05</span><div><div class="case-label">Tools + ops <em class="st-build">Building</em></div><h3>Tools for operators</h3><p>Simple calculators, templates, knowledge bases, and cleaner handoffs for small businesses and agency teams that need clarity more than complexity.</p></div><button type="button" class="btn case-open" data-case="tools">Open the file</button></article>
+          <article class="case-card"><span class="case-mark">06</span><div><div class="case-label">Community <em class="st-idea">Idea folder</em></div><h3>Local ideas</h3><p>Projects and concepts around local business, community improvement, transportation, and practical public problem-solving.</p></div><button type="button" class="btn case-open" data-case="local">Open the file</button></article>
         </div>
       </section>
 
@@ -578,6 +646,21 @@
     </footer>
   </div>
 
+  <dialog class="case-dialog" id="caseDialog" aria-labelledby="cdTitle">
+    <div class="folder">
+      <div class="folder-tab" id="cdTab">Case file</div>
+      <div class="folder-stamp" id="cdStamp">Active</div>
+      <div class="folder-paper">
+        <button class="folder-close" type="button" id="cdClose" aria-label="Close file">Close file</button>
+        <div class="kicker" id="cdKicker">Case file 01</div>
+        <h3 id="cdTitle"></h3>
+        <div id="cdBody"></div>
+        <div class="folder-next"><b>Next on this file</b><span id="cdNext"></span></div>
+        <div class="folder-actions" id="cdActions"></div>
+      </div>
+    </div>
+  </dialog>
+
   <script>
     const btn = document.querySelector('.menu-btn');
     const links = document.querySelector('#navLinks');
@@ -618,7 +701,8 @@
       };
       const go = (url) => setTimeout(() => { location.href = url; }, 550);
       const CMDS = {
-        help: () => ['commands: projects · thoughts · bio · contact · claim · coffee · sudo · clear'],
+        help: () => ['commands: projects · thoughts · bio · contact · lights · claim · coffee · sudo · clear'],
+        lights: () => { toggleLamp(); return [document.documentElement.classList.contains('dark') ? 'lights off. desk lamp on.' : 'lights on. back to daylight.']; },
         projects: () => { document.getElementById('case-files').scrollIntoView(); return ['we insure things · weinsureshit.com · license school · wit radio · operator tools', 'opening the case files …']; },
         thoughts: () => { go('thoughts/'); return ['opening /thoughts …']; },
         bio: () => { go('bio.html'); return ['pulling the bio from the drawer …']; },
@@ -638,6 +722,114 @@
         (fn ? fn() : ['unknown command: ‘' + raw + '’. try ‘help’.']).forEach(l => print(l));
       });
       document.querySelector('.console').addEventListener('click', e => { if(e.target.tagName !== 'INPUT') termIn.focus(); });
+    }
+
+    // Desk lamp / after-hours mode
+    const lampBtn = document.getElementById('lampBtn');
+    function toggleLamp(){
+      const dark = document.documentElement.classList.toggle('dark');
+      try{ localStorage.setItem('lw-theme', dark ? 'dark' : 'light'); }catch(e){}
+      if(lampBtn){
+        lampBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        lampBtn.setAttribute('aria-label', dark ? 'Turn the lights back on' : 'Turn the desk lamp off');
+      }
+    }
+    if(lampBtn){
+      lampBtn.addEventListener('click', toggleLamp);
+      if(document.documentElement.classList.contains('dark')){
+        lampBtn.setAttribute('aria-pressed','true');
+        lampBtn.setAttribute('aria-label','Turn the lights back on');
+      }
+    }
+
+    // Case files that open
+    const CASES = {
+      wit: {
+        num: '01', label: 'Agency build', status: 'Active', st: 'st-active', title: 'We Insure Things',
+        body: [
+          'The main file. A modern insurance agency built around a simple bet: coverage people actually understand is worth more than coverage they just sign for.',
+          'The work right now: digital-first workflows, broader carrier access, customer experience that does not require a dictionary, and the growth systems carried over from building a top-3% Allstate agency.'
+        ],
+        next: 'Keep making insurance feel less like paperwork and more like an answer.',
+        links: [{ href: 'https://weinsurethings.com', label: 'Visit weinsurethings.com', ext: true }]
+      },
+      wis: {
+        num: '02', label: 'Lead site', status: 'Experiment', st: 'st-exp', title: 'WeInsureShit.com',
+        body: [
+          'Yes, it is a real domain. That is the point — you remembered it already.',
+          'The experiment: does blunt, plain talk convert better than the polished internet blender? Clear promises, no bait-and-switch, humor that earns trust. People are tired of being sold to; this file tests whether honesty is the better funnel.'
+        ],
+        next: 'Tighten the conversion flow, then measure it against the boring version.',
+        links: []
+      },
+      school: {
+        num: '03', label: 'Education', status: 'Building', st: 'st-build', title: 'Free license school',
+        body: [
+          'Licensing prep mostly teaches memorization: cram the bank of exam questions, pass, forget. Then the first real customer asks a real question and the exam does not help.',
+          'This file is free study tools that teach how coverage actually works — built on the training systems that turned brand-new hires into producers, the same playbook agencies picked up nationwide.'
+        ],
+        next: 'First modules: license prep that survives contact with a real customer.',
+        links: []
+      },
+      radio: {
+        num: '04', label: 'Media', status: 'Experiment', st: 'st-exp', title: 'WIT Radio',
+        body: [
+          'The media arm of the desk. Show concepts, audio experiments, and insurance-adjacent content that is allowed to be interesting.',
+          'If insurance is emotional before it is technical, the content about it should be too. Nobody has ever binged a coverage brochure.'
+        ],
+        next: 'Pilot one show concept end to end.',
+        links: [{ href: 'thoughts/insurance-is-emotional.html', label: 'Related: field log 01' }]
+      },
+      tools: {
+        num: '05', label: 'Tools + ops', status: 'Building', st: 'st-build', title: 'Tools for operators',
+        body: [
+          'Calculators, templates, knowledge bases, and cleaner handoffs for small businesses and agency teams. Most operators do not need another dashboard — they need clearer next steps.',
+          'Everything in this file comes from systems that ran a real agency: hiring, training, service workflows, and the boring-but-critical glue between them.'
+        ],
+        next: 'Package the templates operators keep asking for.',
+        links: []
+      },
+      local: {
+        num: '06', label: 'Community', status: 'Idea folder', st: 'st-idea', title: 'Local ideas',
+        body: [
+          'The folder for concepts that sound ridiculous until the practical use shows up: local business fixes, community improvement, transportation, public problem-solving.',
+          'Ideas go in, marinate, and occasionally become real. The disaster recovery kits started as one of these.'
+        ],
+        next: 'Keep collecting. Build the one that will not leave me alone.',
+        links: []
+      }
+    };
+    const caseDialog = document.getElementById('caseDialog');
+    if(caseDialog && caseDialog.showModal){
+      const el = id => document.getElementById(id);
+      document.querySelectorAll('.case-open').forEach(btn => btn.addEventListener('click', () => {
+        const c = CASES[btn.dataset.case];
+        if(!c) return;
+        el('cdTab').textContent = 'Case file ' + c.num;
+        el('cdKicker').textContent = c.label;
+        const stamp = el('cdStamp');
+        stamp.textContent = c.status;
+        stamp.className = 'folder-stamp ' + c.st;
+        el('cdTitle').textContent = c.title;
+        el('cdBody').innerHTML = c.body.map(p => '<p></p>').join('');
+        [...el('cdBody').children].forEach((p, i) => { p.textContent = c.body[i]; });
+        el('cdNext').textContent = c.next;
+        const actions = el('cdActions');
+        actions.innerHTML = '';
+        c.links.forEach(l => {
+          const a = document.createElement('a');
+          a.className = 'btn'; a.href = l.href; a.textContent = l.label;
+          if(l.ext){ a.target = '_blank'; a.rel = 'noopener'; }
+          actions.appendChild(a);
+        });
+        const go = document.createElement('a');
+        go.className = 'btn btn-orange'; go.href = '#contact'; go.textContent = 'Talk about this file';
+        go.addEventListener('click', () => caseDialog.close());
+        actions.appendChild(go);
+        caseDialog.showModal();
+      }));
+      document.getElementById('cdClose').addEventListener('click', () => caseDialog.close());
+      caseDialog.addEventListener('click', e => { if(e.target === caseDialog) caseDialog.close(); });
     }
 
     // "Received" stamp on the contact form
