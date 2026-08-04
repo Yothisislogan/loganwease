@@ -6,6 +6,7 @@
   <title>File Not Found | Logan Wease</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -20,6 +21,8 @@
     .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
     .btn{display:inline-flex;border:2px solid var(--ink);border-radius:10px;padding:13px 18px;background:var(--ink);color:var(--paper2);font-family:var(--mono);font-weight:900;text-transform:uppercase;font-size:13px;text-decoration:none;box-shadow:6px 6px 0 var(--blue)}
     .btn.alt{background:var(--paper2);color:var(--ink);box-shadow:6px 6px 0 var(--orange)}
+    html.dark body{background:linear-gradient(90deg,rgba(255,248,233,.04) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(255,248,233,.03) 1px,transparent 1px) 0 0/34px 34px,#0b1521}
+    html.dark .card{color:var(--ink);box-shadow:14px 16px 0 rgba(255,98,98,.55)}
   </style>
 </head>
 <body>

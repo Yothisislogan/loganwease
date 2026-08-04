@@ -6,6 +6,7 @@
   <title>Message Sent | Logan Wease</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -15,6 +16,8 @@
     .card{max-width:760px;background:var(--paper2);border:2px solid var(--ink);border-radius:30px;padding:38px;box-shadow:14px 16px 0 var(--blue)}
     .stamp{display:inline-block;border:2px solid var(--ink);padding:8px 12px;border-radius:8px;box-shadow:5px 5px 0 var(--orange);font-family:var(--mono);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;transform:rotate(-2deg);margin-bottom:24px}
     h1{font-family:var(--head);font-size:clamp(48px,9vw,88px);line-height:.93;letter-spacing:-.055em;margin:0 0 18px}p{font-size:19px;line-height:1.65;margin:0;color:#3a4350;font-weight:650}.btn{display:inline-flex;margin-top:28px;border:2px solid var(--ink);border-radius:10px;padding:13px 18px;background:var(--ink);color:var(--paper2);font-family:var(--mono);font-weight:900;text-transform:uppercase;text-decoration:none;box-shadow:6px 6px 0 var(--orange)}
+    html.dark body{background:linear-gradient(90deg,rgba(255,248,233,.04) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(255,248,233,.03) 1px,transparent 1px) 0 0/34px 34px,#0b1521}
+    html.dark .card{color:var(--ink);box-shadow:14px 16px 0 rgba(0,174,239,.5)}
   </style>
 </head>
 <body><main class="card"><div class="stamp">message received</div><h1>The note made it to the desk.</h1><p>Thanks for reaching out. If it is a fit, Logan will follow up directly.</p><a class="btn" href="index.html">Back to the working file</a></main></body>

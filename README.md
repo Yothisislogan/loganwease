@@ -46,3 +46,19 @@ Version 007 (seven changes pass):
 5. New `bio.html` — clean printable bio with headshot, fast facts, and a print-to-PDF button; replaces the raw .txt downloads (txt still linked from the bio page).
 6. Community proof added to Receipts: Daily Press disaster-recovery kits and Allstate Foundation grants, as a taped-in note.
 7. Desk details: coffee ring on Case Files, pencil scribble in Field Notes, photo-strip hover straighten, and a footer link row (version bumped to 004 in the footer).
+
+Version 008 (bold pass):
+- After-hours mode: a desk-lamp toggle (every page) drops the site into a dark "lights off" theme — the desk goes dark, the paper stays lit. Follows system dark mode by default, remembered in localStorage (`lw-theme`), and the terminal accepts `lights`.
+- Case files open: every case card's "Open the file" button swings open a manila-folder dialog with the full story, a status stamp, a "next on this file" sticky note, and links.
+- Branded social share card at `assets/og-card.jpg` (1200x630), used as og:image on the homepage, bio, and thoughts index. Regenerate from scratch by re-rendering the card HTML at 1200x630 if the branding changes.
+
+HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
+(`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
+form attributes and will NOT submit on plain nginx — POSTs to static files
+return 405. Options: point them at a form endpoint (e.g. Formspree/Web3Forms)
+or add a tiny handler on the server. Suggested nginx config additions:
+  error_page 404 /404.html;
+  location ~* \.html$ { add_header Cache-Control "public, max-age=300"; }
+  location /assets/ { add_header Cache-Control "public, max-age=2592000"; }
+(The current 7-day cache on HTML means deploys take up to a week to appear for
+returning visitors.)
