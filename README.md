@@ -57,6 +57,11 @@ Version 009 (performance pass — Lighthouse mobile was 84 with FCP/LCP at 3.4s)
 - Hero photo now uses `srcset` (800w/1200w) so phones download the 35KB version instead of 64KB.
 - Note: the 404 page references fonts with root-absolute paths (`/assets/fonts/...`) since it can be served at any URL.
 
+Version 010 (links + idea folder):
+- Case-file dialogs now link out: weinsureshit.com, learn.weinsurethings.com, radio.weinsurethings.com (title corrected to "WiT Radio").
+- New `ideas.html` — The Idea Folder: featured RIC Rail Connector Initiative (intro packet at `assets/ric-rail-connector-intro-packet.pdf`), the graduated disaster-recovery-kits card, sealed placeholder notes, and a "start a file" CTA. Dark mode + self-hosted fonts included.
+- Local Ideas case file links to the folder page and the PDF; footer gains an Ideas link; terminal gains an `ideas` command.
+
 HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
 (`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
 form attributes and will NOT submit on plain nginx — POSTs to static files
