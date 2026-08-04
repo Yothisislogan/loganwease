@@ -42,10 +42,14 @@
     "description": "Insurance founder and operator building agencies, teams, training systems, and practical business tools."
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600..900,35,1&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/fraunces-var.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/inter-var.woff2">
   <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/plexmono-400.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(assets/fonts/inter-var.woff2) format('woff2')}
     :root{
       --ink:#111419;
       --ink-2:#2d3440;
@@ -453,7 +457,7 @@
         <div class="hero-board" aria-label="Visual board with Logan Wease photo and notes">
           <div class="file-tab">operator desk</div>
           <div class="receipt"><strong><span class="dot"></span> On the desk &middot; Aug 3, 2026</strong>Shipped the <a href="thoughts/" style="text-decoration:underline;text-underline-offset:3px">/thoughts</a> page. Field log 01 &mdash; &ldquo;Insurance is emotional before it is technical&rdquo; &mdash; is live. Next up: field log 02.</div>
-          <figure class="photo-card"><img src="assets/logan-seated.jpg" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" /></figure>
+          <figure class="photo-card"><img src="assets/logan-seated.jpg" srcset="assets/logan-seated-800.jpg 800w, assets/logan-seated.jpg 1200w" sizes="(max-width: 980px) 92vw, 560px" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" /></figure>
           <div class="console" aria-label="Interactive operating log terminal">
             <div class="console-title"><span class="light"></span><span class="light"></span><span class="light"></span> operating log</div>
             <div id="termOut" aria-live="polite">

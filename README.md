@@ -52,6 +52,11 @@ Version 008 (bold pass):
 - Case files open: every case card's "Open the file" button swings open a manila-folder dialog with the full story, a status stamp, a "next on this file" sticky note, and links.
 - Branded social share card at `assets/og-card.jpg` (1200x630), used as og:image on the homepage, bio, and thoughts index. Regenerate from scratch by re-rendering the card HTML at 1200x630 if the branding changes.
 
+Version 009 (performance pass — Lighthouse mobile was 84 with FCP/LCP at 3.4s):
+- Self-hosted all fonts in `assets/fonts/` (Fraunces variable, Inter variable, IBM Plex Mono 400/500/700 — ~213KB total, latin subset). The render-blocking Google Fonts request chain (~2.5s est. savings on Slow 4G) is gone, along with both third-party origins. Declarations are inlined per page with `font-display: swap`; the two variable fonts are preloaded.
+- Hero photo now uses `srcset` (800w/1200w) so phones download the 35KB version instead of 64KB.
+- Note: the 404 page references fonts with root-absolute paths (`/assets/fonts/...`) since it can be served at any URL.
+
 HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
 (`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
 form attributes and will NOT submit on plain nginx — POSTs to static files

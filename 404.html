@@ -7,10 +7,11 @@
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,700..900,35,1&family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(/assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
     :root{--ink:#111419;--paper:#f3ead8;--paper2:#fff8e9;--blue:#00AEEF;--orange:#ff8a3d;--red:#ff6262;--head:'Fraunces',Georgia,serif;--mono:'IBM Plex Mono',monospace;--body:'Inter',system-ui,sans-serif}
     *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(90deg,rgba(17,20,25,.04) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(17,20,25,.035) 1px,transparent 1px) 0 0/34px 34px,var(--paper);font-family:var(--body);color:var(--ink)}
     .card{max-width:760px;background:var(--paper2);border:2px solid var(--ink);border-radius:30px;padding:38px;box-shadow:14px 16px 0 var(--red);position:relative}
