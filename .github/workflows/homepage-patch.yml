@@ -1,0 +1,32 @@
+name: Integrate homepage launch links
+
+on:
+  push:
+    branches:
+      - agent/homepage-launch
+
+permissions:
+  contents: write
+
+jobs:
+  patch-homepage:
+    if: ${{ !contains(github.event.head_commit.message, '[homepage-patched]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/homepage-launch
+          fetch-depth: 0
+      - name: Patch homepage
+        run: python3 scripts/integrate-homepage.py
+      - name: Commit homepage integration
+        run: |
+          if git diff --quiet; then
+            echo "No homepage changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "[homepage-patched] Integrate Working File into homepage"
+          git push origin HEAD:agent/homepage-launch
