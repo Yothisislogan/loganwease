@@ -53,6 +53,16 @@ window.WORKING_FILE_DATA = {
       href: "../failures/"
     },
     {
+      id: "process-rescue",
+      title: "The 30-Day Process Rescue",
+      eyebrow: "Public build challenge",
+      status: "active",
+      summary: "One broken insurance or business process will be selected, mapped, redesigned, prototyped, and documented in public over a maximum of thirty days.",
+      proof: ["Challenge framework published", "Selection rules visible", "Submissions routed through Office Hours"],
+      next: "Collect qualified submissions and select public build challenge 001.",
+      href: "../build-in-public/"
+    },
+    {
       id: "ric-rail",
       title: "RIC Rail Connector",
       eyebrow: "Transportation and community",
@@ -157,6 +167,15 @@ window.WORKING_FILE_DATA = {
       ]
     },
     {
+      title: "What is the 30-Day Process Rescue?",
+      keywords: ["30 day", "process rescue", "public build", "challenge", "broken process", "prototype"],
+      answer: "It is a public build challenge that selects one real workflow, maps the current failure points, redesigns the path, builds the smallest useful fix, and publishes the result—including unsuccessful tests.",
+      links: [
+        {label: "Open the public challenge", href: "../build-in-public/"},
+        {label: "Submit a process", href: "../office-hours/"}
+      ]
+    },
+    {
       title: "What is WiTNext?",
       keywords: ["witnext", "crm", "transcript", "coaching", "gmail", "phone"],
       answer: "WiTNext is an in-house insurance CRM and communication platform intended to combine customer records, policies, quotes, tasks, transcript intake, and real-time coaching in one operator-focused workspace.",
@@ -166,7 +185,7 @@ window.WORKING_FILE_DATA = {
     }
   ],
   ideas: [
-    {id: "public-build", title: "Public build challenge", note: "Choose one ambitious build and publish the decisions, costs, setbacks, and shipped result."},
+    {id: "public-build", title: "Select Process Rescue 001", note: "The 30-Day Process Rescue is live. Help choose the first real workflow to map, redesign, prototype, and document."},
     {id: "playbook", title: "Expand the playbook library", note: "Add practical hiring, onboarding, carrier appetite, customer experience, and project templates."},
     {id: "office-hours", title: "Publish the first office-hours teardown", note: "Turn one submitted business or insurance problem into a public before-and-after case file."},
     {id: "failure-files", title: "Open more failure files", note: "Document paused or failed projects with the original belief, cost, lesson, and possible return path."}
