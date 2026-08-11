@@ -62,6 +62,22 @@ Version 010 (links + idea folder):
 - New `ideas.html` — The Idea Folder: featured RIC Rail Connector Initiative (intro packet at `assets/ric-rail-connector-intro-packet.pdf`), the graduated disaster-recovery-kits card, sealed placeholder notes, and a "start a file" CTA. Dark mode + self-hosted fonts included.
 - Local Ideas case file links to the folder page and the PDF; footer gains an Ideas link; terminal gains an `ideas` command.
 
+Version 011 (three bold, non-insurance features):
+1. LW-FM (`fm.html`) — an after-hours desk radio generated live with the Web
+   Audio API: rain, typewriter bursts, tape hiss + crackle, and a warm chord
+   loop (Fmaj7/Am7/Dm7/Bbmaj7) from detuned oscillators. Four channel sliders,
+   presets, live VU meter. No audio files, nothing downloaded or tracked.
+2. The desk is real — on desktop, the hero collage objects (tab, status note,
+   polaroid, console) are draggable with momentum and edge-bounce; positions
+   persist in localStorage (`lw-desk`, "reset desk" appears once moved). The
+   polaroid flips (button or double-click) to reveal a note on the back.
+3. The Drawer — a site-wide hunt (`drawer.js` + `drawer.html`, noindex). Five
+   objects are hidden across the site: paperclip (Receipts), pen (thoughts),
+   coffee bean (bio), stamp (ideas), brass key (the 404 page). Finds persist
+   in localStorage (`lw-drawer`); a progress chip appears after the first
+   find; all five unlock the bottom-drawer page. Terminal gains `fm` and
+   `drawer` commands; footer gains LW-FM.
+
 HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
 (`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
 form attributes and will NOT submit on plain nginx — POSTs to static files

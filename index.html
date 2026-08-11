@@ -185,7 +185,19 @@
     .photo-card{
       position:absolute;inset:52px 34px 34px 34px;background:#fff;padding:14px;border:2px solid var(--ink);
       box-shadow:16px 18px 0 rgba(17,20,25,.18);transform:rotate(2.5deg);z-index:3;
+      transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.2,.4,1);
     }
+    .photo-card.flipped{transform:rotate(2.5deg) rotateY(180deg)}
+    .photo-card img{backface-visibility:hidden}
+    .photo-back{position:absolute;inset:14px;background:#fdf6e6;transform:rotateY(180deg);backface-visibility:hidden;display:grid;place-items:center;padding:22px;text-align:center;font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:#4a4132}
+    .photo-back small{display:block;margin-top:14px;font-family:var(--mono);font-style:normal;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a7d64}
+    .flip-btn{position:absolute;right:-13px;bottom:-13px;z-index:9;width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;background:var(--paper-2);cursor:pointer;font-family:var(--mono);font-size:14px;font-weight:700;line-height:1;box-shadow:3px 3px 0 rgba(17,20,25,.2)}
+    .flip-btn:hover{transform:rotate(180deg)}
+    .desk-hint{position:absolute;left:6px;bottom:-30px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,20,25,.4);display:flex;gap:12px;align-items:center}
+    .desk-hint button{border:none;background:none;font:inherit;color:var(--blue-deep);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+    html.dark .desk-hint{color:rgba(236,229,214,.4)}
+    html.dark .photo-back,html.dark .flip-btn{color:#111419}
+    @media (max-width:980px){.desk-hint{display:none}}
     .photo-card img{width:100%;height:100%;object-fit:cover;object-position:70% 30%;filter:saturate(.95) contrast(1.05)}
     .photo-card::before{
       content:"";position:absolute;left:50%;top:-22px;width:138px;height:34px;transform:translateX(-50%) rotate(-2deg);background:rgba(245,196,81,.68);border:1px solid rgba(17,20,25,.12);box-shadow:0 4px 8px rgba(17,20,25,.12);z-index:5
@@ -457,7 +469,10 @@
         <div class="hero-board" aria-label="Visual board with Logan Wease photo and notes">
           <div class="file-tab">operator desk</div>
           <div class="receipt"><strong><span class="dot"></span> On the desk &middot; Aug 3, 2026</strong>Shipped the <a href="thoughts/" style="text-decoration:underline;text-underline-offset:3px">/thoughts</a> page. Field log 01 &mdash; &ldquo;Insurance is emotional before it is technical&rdquo; &mdash; is live. Next up: field log 02.</div>
-          <figure class="photo-card"><img src="assets/logan-seated.jpg" srcset="assets/logan-seated-800.jpg 800w, assets/logan-seated.jpg 1200w" sizes="(max-width: 980px) 92vw, 560px" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" /></figure>
+          <figure class="photo-card" id="photoCard"><img src="assets/logan-seated.jpg" srcset="assets/logan-seated-800.jpg 800w, assets/logan-seated.jpg 1200w" sizes="(max-width: 980px) 92vw, 560px" alt="Logan Wease seated outdoors in a suit, smiling" width="1200" height="800" fetchpriority="high" />
+            <div class="photo-back" aria-hidden="true">&ldquo;Keep this one. I look like I know what I&rsquo;m doing.&rdquo;<br />&mdash; L<small>flip it back &middot; the desk remembers</small></div>
+            <button class="flip-btn" id="flipBtn" type="button" aria-label="Flip the photo over" title="Flip the photo">&#8634;</button>
+          </figure>
           <div class="console" aria-label="Interactive operating log terminal">
             <div class="console-title"><span class="light"></span><span class="light"></span><span class="light"></span> operating log</div>
             <div id="termOut" aria-live="polite">
@@ -468,6 +483,7 @@
             </div>
             <form id="termForm" autocomplete="off"><span class="prompt">&gt;</span><input id="termIn" aria-label="Terminal command input" placeholder="help" /></form>
           </div>
+          <p class="desk-hint">psst &mdash; the desk is real. drag things. <button type="button" id="deskReset" hidden>reset desk</button></p>
         </div>
       </section>
 
@@ -559,6 +575,7 @@
         <aside class="community-note">
           <b>In the community</b>
           <p>Disaster recovery kits for local families, covered by the Daily Press. Helped bring Allstate Foundation grants &mdash; including $20,000 to the Assistance League of Northern Virginia &mdash; to community groups doing the quiet work.</p>
+          <button class="lw-lost" data-item="paperclip" aria-label="A lost paperclip" style="position:absolute;right:16px;bottom:8px;transform:rotate(28deg)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12l-8.5 8.5a5 5 0 0 1-7-7L14 5a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L16 7"/></svg></button>
         </aside>
         <div class="photo-strip">
           <figure class="strip-card"><img src="assets/logan-headshot.png" alt="Logan Wease portrait" width="351" height="399" loading="lazy" decoding="async" /><figcaption class="caption">Founder / operator</figcaption></figure>
@@ -642,7 +659,7 @@
     </main>
 
     <footer class="footer">
-      <div class="footer-inner"><span>© <span id="year"></span> Logan Wease</span><nav class="footer-links" aria-label="Footer"><a href="#case-files">Case files</a><a href="ideas.html">Ideas</a><a href="thoughts/">Thoughts</a><a href="bio.html">Bio</a><a href="#contact">Contact</a></nav><span>Founder file / version 004</span></div>
+      <div class="footer-inner"><span>© <span id="year"></span> Logan Wease</span><nav class="footer-links" aria-label="Footer"><a href="#case-files">Case files</a><a href="ideas.html">Ideas</a><a href="thoughts/">Thoughts</a><a href="fm.html">LW-FM</a><a href="bio.html">Bio</a><a href="#contact">Contact</a></nav><span>Founder file / version 004</span></div>
     </footer>
   </div>
 
@@ -661,6 +678,7 @@
     </div>
   </dialog>
 
+  <script defer src="drawer.js" data-root="./"></script>
   <script>
     const btn = document.querySelector('.menu-btn');
     const links = document.querySelector('#navLinks');
@@ -701,8 +719,16 @@
       };
       const go = (url) => setTimeout(() => { location.href = url; }, 550);
       const CMDS = {
-        help: () => ['commands: projects · ideas · thoughts · bio · contact · lights · claim · coffee · sudo · clear'],
+        help: () => ['commands: projects · ideas · thoughts · bio · fm · drawer · contact · lights · claim · coffee · sudo · clear'],
         ideas: () => { go('ideas.html'); return ['opening the idea folder …']; },
+        fm: () => { go('fm.html'); return ['tuning to 88.1 LW-FM …']; },
+        radio: () => { go('fm.html'); return ['tuning to 88.1 LW-FM …']; },
+        drawer: () => {
+          const d = window.lwDrawer;
+          if(d && d.unlocked()){ go('drawer.html'); return ['the drawer is open. after you …']; }
+          const n = d ? d.count() : 0;
+          return ['the bottom drawer is locked. ' + (5 - n) + ' lost thing' + (5 - n === 1 ? '' : 's') + ' still hiding around this site.'];
+        },
         lights: () => { toggleLamp(); return [document.documentElement.classList.contains('dark') ? 'lights off. desk lamp on.' : 'lights on. back to daylight.']; },
         projects: () => { document.getElementById('case-files').scrollIntoView(); return ['we insure things · weinsureshit.com · license school · wit radio · operator tools', 'opening the case files …']; },
         thoughts: () => { go('thoughts/'); return ['opening /thoughts …']; },
@@ -847,6 +873,86 @@
         stamped = true;
         contactForm.classList.add('stamping');
         setTimeout(() => contactForm.submit(), 800);
+      });
+    }
+
+    // The desk is real: draggable hero objects with momentum (desktop only)
+    const photoCard = document.getElementById('photoCard');
+    const flipBtn = document.getElementById('flipBtn');
+    if(flipBtn && photoCard){
+      const flip = () => photoCard.classList.toggle('flipped');
+      flipBtn.addEventListener('click', flip);
+      photoCard.addEventListener('dblclick', e => { if(!e.target.closest('button')) flip(); });
+    }
+    if(matchMedia('(min-width: 981px) and (pointer: fine)').matches){
+      const board = document.querySelector('.hero-board');
+      const resetBtn = document.getElementById('deskReset');
+      let saved = {};
+      try{ saved = JSON.parse(localStorage.getItem('lw-desk') || '{}'); }catch(e){}
+      const items = [
+        { el: document.querySelector('.file-tab'), id: 'tab' },
+        { el: document.querySelector('.receipt'), id: 'receipt' },
+        { el: photoCard, id: 'photo' },
+        { el: document.querySelector('.console'), id: 'console', handle: document.querySelector('.console-title') },
+      ].filter(it => it.el);
+      const apply = it => { const p = saved[it.id]; if(p) it.el.style.translate = p[0] + 'px ' + p[1] + 'px'; };
+      items.forEach(apply);
+      if(Object.keys(saved).length && resetBtn) resetBtn.hidden = false;
+      const persist = () => {
+        try{ localStorage.setItem('lw-desk', JSON.stringify(saved)); }catch(e){}
+        if(resetBtn) resetBtn.hidden = false;
+      };
+      items.forEach(it => {
+        const handle = it.handle || it.el;
+        handle.style.touchAction = 'none';
+        handle.style.cursor = 'grab';
+        let drag = false, moved = false, sx, sy, ox, oy, vx = 0, vy = 0, lx, ly, lt, raf;
+        const current = () => (it.el.style.translate || '0 0').split(' ').map(v => parseFloat(v) || 0);
+        handle.addEventListener('pointerdown', e => {
+          if(e.button !== 0 || e.target.closest('a,button,input,form')) return;
+          cancelAnimationFrame(raf);
+          drag = true; moved = false;
+          sx = e.clientX; sy = e.clientY;
+          [ox, oy] = current();
+          lx = e.clientX; ly = e.clientY; lt = performance.now();
+          handle.setPointerCapture(e.pointerId);
+        });
+        handle.addEventListener('pointermove', e => {
+          if(!drag) return;
+          const dx = e.clientX - sx, dy = e.clientY - sy;
+          if(!moved && Math.hypot(dx, dy) < 5) return;
+          moved = true;
+          it.el.style.translate = (ox + dx) + 'px ' + (oy + dy) + 'px';
+          it.el.style.zIndex = 30;
+          const now = performance.now(), dt = Math.max(1, now - lt);
+          vx = (e.clientX - lx) / dt * 16; vy = (e.clientY - ly) / dt * 16;
+          lx = e.clientX; ly = e.clientY; lt = now;
+        });
+        const release = () => {
+          if(!drag) return;
+          drag = false;
+          if(!moved) return;
+          let [cx, cy] = current();
+          const glide = () => {
+            vx *= .92; vy *= .92;
+            cx += vx; cy += vy;
+            const br = board.getBoundingClientRect(), er = it.el.getBoundingClientRect();
+            if((er.left < br.left - 60 && vx < 0) || (er.right > br.right + 60 && vx > 0)) vx *= -.5;
+            if((er.top < br.top - 40 && vy < 0) || (er.bottom > br.bottom + 60 && vy > 0)) vy *= -.5;
+            it.el.style.translate = cx + 'px ' + cy + 'px';
+            if(Math.hypot(vx, vy) > .4){ raf = requestAnimationFrame(glide); }
+            else { saved[it.id] = [Math.round(cx), Math.round(cy)]; persist(); }
+          };
+          glide();
+        };
+        handle.addEventListener('pointerup', release);
+        handle.addEventListener('pointercancel', release);
+      });
+      if(resetBtn) resetBtn.addEventListener('click', () => {
+        saved = {};
+        try{ localStorage.removeItem('lw-desk'); }catch(e){}
+        items.forEach(it => { it.el.style.translate = ''; it.el.style.zIndex = ''; });
+        resetBtn.hidden = true;
       });
     }
   </script>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LW-FM · After-Hours Desk Radio | Logan Wease</title>
+  <meta name="description" content="LW-FM: a lo-fi desk radio generated live in your browser — rain on the window, typewriter clatter, tape hiss, warm chords. No files, no stream, no two nights the same." />
+  <meta property="og:title" content="LW-FM · After-Hours Desk Radio" />
+  <meta property="og:description" content="A lo-fi radio station generated live in your browser. Rain, typewriter, tape hiss, warm chords." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://loganwease.com/fm.html" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+  <meta name="theme-color" content="#07131f" />
+  <link rel="canonical" href="https://loganwease.com/fm.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/fraunces-var.woff2">
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(assets/fonts/inter-var.woff2) format('woff2')}
+    :root{
+      --ink:#111419;--paper:#f3ead8;--paper-2:#fff8e9;--line:rgba(17,20,25,.16);
+      --blue:#00AEEF;--blue-deep:#0078a7;--orange:#ff8a3d;--gold:#f0c452;--green:#77d5b8;--red:#ff6262;
+      --navy:#07131f;--navy-2:#0d2135;
+      --head:'Fraunces', Georgia, serif;--mono:'IBM Plex Mono', ui-monospace, monospace;--ui:'Inter', system-ui, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:var(--ui);line-height:1.6;
+      background:
+        linear-gradient(90deg, rgba(17,20,25,.045) 1px, transparent 1px) 0 0/34px 34px,
+        linear-gradient(rgba(17,20,25,.035) 1px, transparent 1px) 0 0/34px 34px,
+        var(--paper)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:var(--paper-2);font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;align-items:center;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#3d4653}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+    .lamp-btn{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:2px 2px 0 var(--blue);flex:none}
+
+    .hero{padding:48px 0 8px;text-align:center}
+    .kicker{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep)}
+    h1{margin:12px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:.96;font-size:clamp(44px,8vw,72px)}
+    .dek{font-size:17.5px;color:#3d4653;margin:16px auto 0;max-width:560px;line-height:1.6}
+
+    .radio{margin:34px auto 0;max-width:620px;background:var(--navy);border:2px solid var(--ink);border-radius:22px;padding:26px;box-shadow:14px 16px 0 rgba(17,20,25,.22);color:#dceef6;position:relative}
+    .radio::before{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0/26px 26px,linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px) 0 0/26px 26px;pointer-events:none}
+    .radio>*{position:relative}
+    .radio-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+    .freq{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#9de9ff}
+    .freq b{color:#fff;font-size:18px}
+    .power{border:2px solid #9de9ff;background:transparent;color:#9de9ff;border-radius:999px;padding:11px 22px;font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
+    .power[aria-pressed="true"]{background:#9de9ff;color:var(--navy);box-shadow:0 0 22px rgba(157,233,255,.5)}
+
+    .vu{display:flex;align-items:flex-end;gap:4px;height:44px;margin:4px 0 18px}
+    .vu i{flex:1;background:rgba(157,233,255,.16);border-radius:2px;height:8%;transition:height .08s linear}
+    .radio.on .vu i{background:linear-gradient(180deg,#9de9ff,#0078a7)}
+
+    .now{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,238,246,.55);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);padding:10px 2px;margin-bottom:20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .now b{color:#9de9ff}
+
+    .channels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+    .ch{display:grid;gap:8px;text-align:center}
+    .ch label{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9de9ff}
+    .ch input[type=range]{writing-mode:vertical-lr;direction:rtl;width:100%;height:110px;accent-color:#00AEEF;background:transparent;margin:0 auto}
+    .ch .val{font-family:var(--mono);font-size:10px;color:rgba(220,238,246,.5)}
+
+    .presets{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .preset{border:1.5px solid rgba(157,233,255,.5);background:transparent;color:#cfeefb;border-radius:999px;padding:8px 14px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+    .preset:hover,.preset.active{background:rgba(157,233,255,.16);border-color:#9de9ff;color:#fff}
+
+    .plate{margin:26px auto 0;max-width:620px;font-size:13.5px;color:#79818d;text-align:center;line-height:1.7}
+    .plate a{text-decoration:underline;text-underline-offset:3px}
+
+    .foot{border-top:1px solid var(--line);margin-top:52px}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#79818d}
+    .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    @media (max-width:560px){.channels{grid-template-columns:repeat(2,1fr)}.ch input[type=range]{height:84px}}
+
+    html.dark body{color:#ece5d6;background:
+      linear-gradient(90deg, rgba(255,248,233,.04) 1px, transparent 1px) 0 0/34px 34px,
+      linear-gradient(rgba(255,248,233,.03) 1px, transparent 1px) 0 0/34px 34px,
+      #0b1521}
+    html.dark .topbar{border-bottom-color:rgba(255,248,233,.16)}
+    html.dark .top-links{color:#c2cdd7}
+    html.dark .brand{color:#f3ead8}
+    html.dark .brand-stamp{color:#111419}
+    html.dark .lamp-btn{background:#0d1a2a;color:#f0c452;border-color:rgba(255,248,233,.4)}
+    html.dark .kicker{color:#9de9ff}
+    html.dark .dek{color:#b5c0ca}
+    html.dark .radio{box-shadow:14px 16px 0 rgba(0,0,0,.45), 0 0 60px rgba(157,233,255,.07)}
+    html.dark .foot{border-top-color:rgba(255,248,233,.14)}
+    html.dark .foot a:hover{color:#fff8e9}
+    html.dark a:focus-visible,html.dark button:focus-visible{outline-color:#9de9ff}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Logan Wease home"><span class="brand-stamp">LW</span><span>Logan Wease / LW-FM</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="./">Working file</a>
+        <a href="thoughts/">Thoughts</a>
+        <button class="lamp-btn" type="button" id="lampBtn" aria-label="Toggle the desk lamp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1.3 1.5 1.5 2.5h5c.2-1 .7-1.8 1.5-2.5A6 6 0 0 0 12 3z"/></svg></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="kicker">88.1 &middot; broadcasting from the desk</div>
+        <h1>LW-FM.</h1>
+        <p class="dek">An after-hours desk radio, generated live in your browser. Rain on the window, a typewriter somewhere, tape hiss, warm chords. No files. No stream. No two nights the same.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="radio" id="radio">
+          <div class="radio-top">
+            <div class="freq"><b>88.1</b> LW&ndash;FM</div>
+            <button class="power" id="powerBtn" aria-pressed="false">Power</button>
+          </div>
+          <div class="vu" id="vu" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="now"><span>Now playing: <b>after hours at the desk</b></span><span id="clockLine">generated live</span></div>
+          <div class="channels">
+            <div class="ch"><label for="chRain">Rain</label><input type="range" id="chRain" min="0" max="100" value="65" /><span class="val" id="vRain">65</span></div>
+            <div class="ch"><label for="chKeys">Typewriter</label><input type="range" id="chKeys" min="0" max="100" value="35" /><span class="val" id="vKeys">35</span></div>
+            <div class="ch"><label for="chTape">Tape hiss</label><input type="range" id="chTape" min="0" max="100" value="40" /><span class="val" id="vTape">40</span></div>
+            <div class="ch"><label for="chPad">Chords</label><input type="range" id="chPad" min="0" max="100" value="55" /><span class="val" id="vPad">55</span></div>
+          </div>
+          <div class="presets">
+            <button class="preset" data-p="65,35,40,55">Late shift</button>
+            <button class="preset" data-p="95,0,25,30">Storm watch</button>
+            <button class="preset" data-p="20,80,30,50">Typing sprint</button>
+            <button class="preset" data-p="0,0,70,65">Tape &amp; chords</button>
+          </div>
+        </div>
+        <p class="plate">Every sound is synthesized on the spot with the Web Audio API &mdash; noise shaped into rain, little clicks shaped into a typewriter, detuned oscillators easing through a chord loop. Nothing is downloaded, nothing is tracked, and when you close the tab the broadcast is gone forever. Pairs well with the <a href="./">desk lamp off</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="./">Back to the working file</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lampBtn').addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark');
+      try{ localStorage.setItem('lw-theme', dark ? 'dark' : 'light'); }catch(e){}
+    });
+
+    // ---- LW-FM synthesis engine ----
+    let ctx = null, master = null, analyser = null, running = false;
+    const chans = {};        // {rain, keys, tape, pad} -> GainNode
+    let timers = [];         // scheduled setTimeout ids for cleanup
+    let rafId = null;
+
+    const $ = id => document.getElementById(id);
+    const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return t; };
+
+    function noiseBuffer(seconds){
+      const b = ctx.createBuffer(1, ctx.sampleRate * seconds, ctx.sampleRate);
+      const d = b.getChannelData(0);
+      for(let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      return b;
+    }
+
+    function buildRain(){
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuffer(2); src.loop = true;
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 850; lp.Q.value = .4;
+      const lfo = ctx.createOscillator(); lfo.frequency.value = .11;
+      const lfoGain = ctx.createGain(); lfoGain.gain.value = 220;
+      lfo.connect(lfoGain).connect(lp.frequency);
+      src.connect(lp).connect(chans.rain);
+      src.start(); lfo.start();
+    }
+
+    function buildTape(){
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuffer(2); src.loop = true;
+      const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 4200;
+      const hiss = ctx.createGain(); hiss.gain.value = .25;
+      src.connect(hp).connect(hiss).connect(chans.tape);
+      src.start();
+      (function crackle(){
+        if(!running) return;
+        const b = ctx.createBufferSource(); b.buffer = noiseBuffer(.012);
+        const g = ctx.createGain(); g.gain.value = .35 + Math.random() * .55;
+        const f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 1800;
+        b.connect(f).connect(g).connect(chans.tape); b.start();
+        later(crackle, 60 + Math.random() * 480);
+      })();
+    }
+
+    function keyClick(){
+      const t = ctx.currentTime;
+      const o = ctx.createOscillator(); o.type = 'square'; o.frequency.value = 70 + Math.random() * 50;
+      const og = ctx.createGain();
+      og.gain.setValueAtTime(.5, t); og.gain.exponentialRampToValueAtTime(.001, t + .03);
+      const n = ctx.createBufferSource(); n.buffer = noiseBuffer(.02);
+      const ng = ctx.createGain();
+      ng.gain.setValueAtTime(.6, t); ng.gain.exponentialRampToValueAtTime(.001, t + .02);
+      const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1400;
+      o.connect(og).connect(chans.keys); n.connect(hp).connect(ng).connect(chans.keys);
+      o.start(t); o.stop(t + .05); n.start(t);
+    }
+    function buildKeys(){
+      let burst = 0;
+      (function tick(){
+        if(!running) return;
+        keyClick();
+        burst++;
+        // typing comes in bursts with thinking pauses, like a real draft
+        const pause = burst % (6 + Math.floor(Math.random() * 9)) === 0
+          ? 900 + Math.random() * 2600
+          : 90 + Math.random() * 260;
+        later(tick, pause);
+      })();
+    }
+
+    // Fmaj7 -> Am7 -> Dm7 -> Bbmaj7, drifting slowly
+    const CHORDS = [
+      [174.61, 220.00, 261.63, 329.63],
+      [220.00, 261.63, 329.63, 392.00],
+      [146.83, 174.61, 220.00, 261.63],
+      [116.54, 174.61, 233.08, 293.66],
+    ];
+    function playChord(i){
+      if(!running) return;
+      const dur = 8, t = ctx.currentTime;
+      const cg = ctx.createGain();
+      cg.gain.setValueAtTime(0, t);
+      cg.gain.linearRampToValueAtTime(.5, t + 2.6);
+      cg.gain.setValueAtTime(.5, t + dur - 2.6);
+      cg.gain.linearRampToValueAtTime(0, t + dur);
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 780;
+      cg.connect(lp).connect(chans.pad);
+      CHORDS[i % CHORDS.length].forEach(freq => {
+        [-4, 4].forEach(cents => {
+          const o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = freq; o.detune.value = cents;
+          const og = ctx.createGain(); og.gain.value = .12;
+          o.connect(og).connect(cg); o.start(t); o.stop(t + dur + .1);
+        });
+      });
+      const bass = ctx.createOscillator(); bass.type = 'sine';
+      bass.frequency.value = CHORDS[i % CHORDS.length][0] / 2;
+      const bg = ctx.createGain(); bg.gain.value = .16;
+      bass.connect(bg).connect(cg); bass.start(t); bass.stop(t + dur + .1);
+      later(() => playChord(i + 1), (dur - 2.4) * 1000);
+    }
+
+    function vuLoop(){
+      const bars = [...document.querySelectorAll('#vu i')];
+      const data = new Uint8Array(analyser.frequencyBinCount);
+      (function draw(){
+        analyser.getByteFrequencyData(data);
+        const step = Math.floor(data.length / bars.length);
+        bars.forEach((b, i) => {
+          const v = data[i * step] / 255;
+          b.style.height = Math.max(8, v * 100) + '%';
+        });
+        rafId = requestAnimationFrame(draw);
+      })();
+    }
+
+    const LEVELS = { rain: .9, keys: .8, tape: .5, pad: 1 };
+    function setLevel(name, pct){
+      if(chans[name]) chans[name].gain.value = (pct / 100) * LEVELS[name];
+      $('v' + name[0].toUpperCase() + name.slice(1)).textContent = pct;
+    }
+
+    function powerOn(){
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = .9;
+      analyser = ctx.createAnalyser(); analyser.fftSize = 64; analyser.smoothingTimeConstant = .82;
+      master.connect(analyser).connect(ctx.destination);
+      ['rain', 'keys', 'tape', 'pad'].forEach(n => {
+        chans[n] = ctx.createGain(); chans[n].connect(master);
+        setLevel(n, +$('ch' + n[0].toUpperCase() + n.slice(1)).value);
+      });
+      running = true;
+      buildRain(); buildTape(); buildKeys(); playChord(0);
+      vuLoop();
+      $('radio').classList.add('on');
+      $('clockLine').textContent = 'on air';
+    }
+
+    function powerOff(){
+      running = false;
+      timers.forEach(clearTimeout); timers = [];
+      if(rafId) cancelAnimationFrame(rafId);
+      document.querySelectorAll('#vu i').forEach(b => b.style.height = '8%');
+      if(ctx) ctx.close();
+      ctx = null;
+      $('radio').classList.remove('on');
+      $('clockLine').textContent = 'off air';
+    }
+
+    $('powerBtn').addEventListener('click', () => {
+      const on = $('powerBtn').getAttribute('aria-pressed') === 'true';
+      $('powerBtn').setAttribute('aria-pressed', on ? 'false' : 'true');
+      on ? powerOff() : powerOn();
+    });
+
+    ['Rain', 'Keys', 'Tape', 'Pad'].forEach(n => {
+      $('ch' + n).addEventListener('input', e => setLevel(n.toLowerCase(), +e.target.value));
+    });
+    document.querySelectorAll('.preset').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const [r, k, t, p] = btn.dataset.p.split(',').map(Number);
+      $('chRain').value = r; $('chKeys').value = k; $('chTape').value = t; $('chPad').value = p;
+      setLevel('rain', r); setLevel('keys', k); setLevel('tape', t); setLevel('pad', p);
+    }));
+  </script>
+</body>
+</html>

@@ -58,7 +58,7 @@
     .prose{padding:26px 0 8px;font-size:17.5px;line-height:1.75;color:#252b34}
     .prose p{margin:0 0 20px;max-width:640px}
 
-    .facts{border:2px solid var(--ink);border-radius:14px;background:#fff8e9;padding:20px 22px;margin:16px 0 8px;box-shadow:6px 7px 0 rgba(17,20,25,.1)}
+    .facts{border:2px solid var(--ink);border-radius:14px;background:#fff8e9;padding:20px 22px;margin:16px 0 8px;box-shadow:6px 7px 0 rgba(17,20,25,.1);position:relative}
     .facts b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--blue-deep);margin-bottom:12px}
     .facts ul{margin:0;padding:0 0 0 18px;font-size:15.5px;color:var(--ink-soft);line-height:1.75}
 
@@ -143,6 +143,7 @@
             <li>Writes field logs at loganwease.com/thoughts</li>
             <li>Contact: logan@weinsurethings.com</li>
           </ul>
+          <button class="lw-lost" data-item="bean" aria-label="A lost coffee bean" style="position:absolute;right:12px;bottom:8px;transform:rotate(18deg)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="6.5" ry="9" transform="rotate(32 12 12)"/><path d="M8.5 6.5c2.5 3.5 4.5 7.5 7 11"/></svg></button>
         </div>
       </div>
     </section>
@@ -164,6 +165,7 @@
       <a href="./">Back to the working file</a>
     </div>
   </footer>
+  <script defer src="drawer.js" data-root="./"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('lampBtn').addEventListener('click', () => {

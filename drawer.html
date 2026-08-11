@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Bottom Drawer | Logan Wease</title>
+  <meta name="description" content="The locked bottom drawer of the desk. Five lost things open it." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#f3ead8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(assets/fonts/inter-var.woff2) format('woff2')}
+    :root{--ink:#111419;--ink-soft:#3d4653;--muted:#79818d;--paper:#f3ead8;--paper-2:#fff8e9;--line:rgba(17,20,25,.16);--blue:#00AEEF;--blue-deep:#0078a7;--orange:#ff8a3d;--gold:#f0c452;--green:#77d5b8;--head:'Fraunces',Georgia,serif;--mono:'IBM Plex Mono',monospace;--ui:'Inter',system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:var(--ui);line-height:1.6;background:linear-gradient(90deg,rgba(17,20,25,.045) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(17,20,25,.035) 1px,transparent 1px) 0 0/34px 34px,var(--paper)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:700px;margin:0 auto;padding:0 22px}
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:var(--paper-2);font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+    .hero{padding:52px 0 8px;text-align:center}
+    .kicker{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep)}
+    h1{margin:12px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:.96;font-size:clamp(42px,8vw,68px)}
+    .dek{font-size:17.5px;color:var(--ink-soft);margin:16px auto 0;max-width:520px}
+
+    .drawer-face{margin:36px auto 0;max-width:560px;background:#b98a52;border:3px solid var(--ink);border-radius:14px;padding:34px 30px;box-shadow:12px 14px 0 rgba(17,20,25,.22);position:relative;text-align:center}
+    .drawer-face::before{content:"";position:absolute;left:24px;right:24px;top:16px;height:3px;background:rgba(17,20,25,.25);border-radius:3px}
+    .handle{width:110px;height:26px;border:3px solid var(--ink);border-radius:999px;background:#8a6236;margin:0 auto 20px;box-shadow:0 4px 0 rgba(17,20,25,.3)}
+    .lock-line{font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:#2a1c0d}
+    .checklist{margin:26px auto 0;max-width:560px;background:var(--paper-2);border:2px solid var(--ink);border-radius:14px;padding:22px 24px;box-shadow:7px 8px 0 rgba(17,20,25,.13);text-align:left}
+    .checklist b{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--blue-deep);display:block;margin-bottom:12px}
+    .checklist ul{margin:0;padding:0;list-style:none;font-family:var(--mono);font-size:13px;font-weight:700;line-height:2}
+    .checklist .got{color:#2fa87c}
+    .checklist .not{color:#8a919c}
+
+    .contents{margin:36px 0 0;display:grid;gap:20px}
+    .item-card{background:var(--paper-2);border:2px solid var(--ink);border-radius:16px;padding:24px;box-shadow:8px 9px 0 rgba(17,20,25,.13)}
+    .item-card>b{font-family:var(--head);font-size:24px;letter-spacing:-.03em;display:block;margin-bottom:12px}
+    .item-card ul{margin:0;padding:0;list-style:none;font-family:var(--mono);font-size:13px;font-weight:700;line-height:2;color:#3d4653}
+    .item-card p{margin:0;color:var(--ink-soft);font-weight:600}
+    .stamp-show{display:grid;place-items:center;padding:10px 0 4px}
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:32px 0 0}
+    .btn{display:inline-flex;border:2px solid var(--ink);border-radius:10px;padding:12px 18px;background:var(--ink);color:var(--paper-2);font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;box-shadow:4px 4px 0 var(--orange);cursor:pointer}
+    .btn.alt{background:var(--paper-2);color:var(--ink);box-shadow:4px 4px 0 var(--blue)}
+    .btn:hover{transform:translate(-1px,-1px)}
+    [hidden]{display:none!important}
+    .foot{border-top:1px solid var(--line);margin-top:52px}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .foot a:hover{color:var(--ink)}
+
+    html.dark body{color:#ece5d6;background:linear-gradient(90deg,rgba(255,248,233,.04) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(255,248,233,.03) 1px,transparent 1px) 0 0/34px 34px,#0b1521}
+    html.dark .topbar{border-bottom-color:rgba(255,248,233,.16)}
+    html.dark .top-links{color:#c2cdd7}
+    html.dark .brand{color:#f3ead8}
+    html.dark .brand-stamp{color:#111419}
+    html.dark .kicker{color:#9de9ff}
+    html.dark .dek{color:#b5c0ca}
+    html.dark :is(.checklist,.item-card,.btn.alt){color:#111419}
+    html.dark .btn{color:var(--paper-2)}
+    html.dark .foot{border-top-color:rgba(255,248,233,.14)}
+    html.dark .foot .wrap{color:#93a0ac}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Logan Wease home"><span class="brand-stamp">LW</span><span>Logan Wease / bottom drawer</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="./">Working file</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="kicker" id="drawerKicker">Locked</div>
+        <h1 id="drawerTitle">The bottom drawer.</h1>
+        <p class="dek" id="drawerDek">Every desk has one drawer that doesn&rsquo;t open. This is that drawer.</p>
+      </div>
+    </section>
+
+    <section id="lockedView">
+      <div class="wrap">
+        <div class="drawer-face">
+          <div class="handle"></div>
+          <div class="lock-line" id="lockLine">Locked &middot; 0 / 5 lost things returned</div>
+        </div>
+        <div class="checklist">
+          <b>Lost around this site</b>
+          <ul id="huntList">
+            <li data-item="paperclip">□ A paperclip &mdash; filed somewhere the proof lives.</li>
+            <li data-item="pen">□ A pen &mdash; rolled off the reading pile.</li>
+            <li data-item="bean">□ A coffee bean &mdash; dropped near the clean drawer.</li>
+            <li data-item="stamp">□ A stamp &mdash; stuck to an idea.</li>
+            <li data-item="key">□ The brass key &mdash; lost pages hold lost things.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="openView" hidden>
+      <div class="wrap">
+        <div class="contents">
+          <div class="item-card">
+            <b>Taglines that didn&rsquo;t make the cut</b>
+            <ul>
+              <li>&ldquo;Systems builder. Rearranger of chairs.&rdquo;</li>
+              <li>&ldquo;Serial domain purchaser.&rdquo;</li>
+              <li>&ldquo;Reply-all survivor.&rdquo;</li>
+              <li>&ldquo;Owner of fourteen half-finished notebooks.&rdquo;</li>
+              <li>&ldquo;Problem collector (see: this drawer).&rdquo;</li>
+            </ul>
+          </div>
+          <div class="item-card">
+            <b>Official desk inventory</b>
+            <ul>
+              <li>1 &times; desk lamp (toggleable, top right)</li>
+              <li>1 &times; radio, tuned to 88.1 LW-FM</li>
+              <li>6 &times; case files, various states of open</li>
+              <li>1 &times; coffee ring (permanent)</li>
+              <li>5 &times; formerly lost objects (thank you)</li>
+              <li>1 &times; terminal that talks back</li>
+            </ul>
+          </div>
+          <div class="item-card">
+            <b>The first stamp</b>
+            <div class="stamp-show"><img src="favicon.svg" alt="The LW stamp" width="96" height="96" /></div>
+            <p style="text-align:center">Version 1 of the LW stamp. Still version 1. If it isn&rsquo;t broken, don&rsquo;t redesign it.</p>
+          </div>
+          <div class="item-card">
+            <b>You actually found everything.</b>
+            <p>Most people never open this drawer. You clicked a paperclip, a pen, a coffee bean, a stamp, and a key hiding on a 404 page. That is exactly the kind of curiosity this desk hires for.</p>
+            <div class="actions" style="margin-top:18px">
+              <a class="btn" href="mailto:logan@weinsurethings.com?subject=I%20opened%20the%20drawer">Tell Logan you found it</a>
+              <a class="btn alt" href="fm.html">Celebrate with LW-FM</a>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn alt" id="resetHunt">Scatter the objects again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="./">Back to the working file</a>
+    </div>
+  </footer>
+
+  <script defer src="drawer.js" data-root="./"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    window.addEventListener('DOMContentLoaded', () => {
+      const d = window.lwDrawer;
+      if(!d) return;
+      const n = d.count();
+      if(d.unlocked()){
+        document.getElementById('lockedView').hidden = true;
+        document.getElementById('openView').hidden = false;
+        document.getElementById('drawerKicker').textContent = 'Unlocked';
+        document.getElementById('drawerDek').textContent = 'It opens. Of course it opens — you found all five.';
+      } else {
+        document.getElementById('lockLine').textContent = 'Locked · ' + n + ' / ' + d.total + ' lost things returned';
+        document.querySelectorAll('#huntList li').forEach(li => {
+          if(d.has(li.dataset.item)){
+            li.classList.add('got');
+            li.textContent = li.textContent.replace('□', '✓') + ' (found)';
+          } else {
+            li.classList.add('not');
+          }
+        });
+      }
+      const rb = document.getElementById('resetHunt');
+      if(rb) rb.addEventListener('click', () => { d.reset(); location.reload(); });
+    });
+  </script>
+</body>
+</html>
