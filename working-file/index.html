@@ -70,5 +70,6 @@
       $('#resetAllocation').addEventListener('click',()=>{Object.keys(allocations).forEach(key=>allocations[key]=0);renderIdeas()}); $('#copyAllocation').addEventListener('click',()=>{const lines=data.ideas.map(idea=>`${idea.title}: ${allocations[idea.id]} point${allocations[idea.id]===1?'':'s'}`);copyText(`MY WORKING FILE ALLOCATION\n\n${lines.join('\n')}\n\nTotal: ${total()}/10`)}); $('#lampBtn').addEventListener('click',()=>{const dark=document.documentElement.classList.toggle('dark');try{localStorage.setItem('lw-theme',dark?'dark':'light')}catch(_){}});
     })();
   </script>
+  <script defer src="/desk.js"></script>
 </body>
 </html>

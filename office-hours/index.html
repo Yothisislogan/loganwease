@@ -35,5 +35,6 @@ form.addEventListener('submit',e=>{e.preventDefault();if(!document.getElementByI
 document.getElementById('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(brief());status.textContent='Brief copied.'}catch(e){status.textContent='Copy was blocked. Select the generated brief and copy it manually.'}});
 render();
 </script>
+  <script defer src="/desk.js"></script>
 </body>
 </html>

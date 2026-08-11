@@ -721,7 +721,19 @@
       };
       const go = (url) => setTimeout(() => { location.href = url; }, 550);
       const CMDS = {
-        help: () => ['commands: projects · ideas · thoughts · bio · fm · drawer · contact · lights · claim · coffee · sudo · clear'],
+        help: () => ['commands: projects · ideas · thoughts · bio · fm · drawer · cat · palette · contact · lights · claim · coffee · sudo · clear'],
+        palette: () => { if(window.lwDesk){ window.lwDesk.palette(); return ['opening the palette … (tip: ⌘K works anywhere)']; } return ['palette not loaded yet — try again in a second.']; },
+        cat: (args) => {
+          const d = window.lwDesk && window.lwDesk.cat;
+          if(!d) return ['no cat detected. suspicious.'];
+          if(args[0] === 'name' && args[1]){
+            const n = args.slice(1).join(' ');
+            d.setName(n);
+            return ['the cat now answers to “' + n + '”. allegedly.'];
+          }
+          const name = d.name();
+          return ['the desk cat' + (name ? ' (“' + name + '”)' : '') + ' has been petted ' + d.pets() + ' time' + (d.pets() === 1 ? '' : 's') + '.', name ? 'it lives on the bottom edge. it knows what it did.' : 'name it: cat name <something>'];
+        },
         ideas: () => { go('ideas.html'); return ['opening the idea folder …']; },
         fm: () => { go('fm.html'); return ['tuning to 88.1 LW-FM …']; },
         radio: () => { go('fm.html'); return ['tuning to 88.1 LW-FM …']; },
@@ -743,12 +755,14 @@
       };
       termForm.addEventListener('submit', e => {
         e.preventDefault();
-        const raw = termIn.value.trim().toLowerCase();
+        const raw = termIn.value.trim();
         termIn.value = '';
         if(!raw) return;
         print('> ' + raw, 'you');
-        const fn = CMDS[raw.split(' ')[0]];
-        (fn ? fn() : ['unknown command: ‘' + raw + '’. try ‘help’.']).forEach(l => print(l));
+        const parts = raw.split(' ');
+        parts[0] = parts[0].toLowerCase();
+        const fn = CMDS[parts[0]];
+        (fn ? fn(parts.slice(1)) : ['unknown command: ‘' + raw + '’. try ‘help’.']).forEach(l => print(l));
       });
       document.querySelector('.console').addEventListener('click', e => { if(e.target.tagName !== 'INPUT') termIn.focus(); });
     }
@@ -958,5 +972,6 @@
       });
     }
   </script>
+  <script defer src="/desk.js"></script>
 </body>
 </html>

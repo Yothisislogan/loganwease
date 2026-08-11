@@ -36,5 +36,6 @@ function escapeHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>'
 function download(p){const blob=new Blob([p.text],{type:'text/markdown;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=p.file;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
 playbooks.forEach(p=>{const el=document.createElement('article');el.className='card template';el.innerHTML=`<div><span class="label">Free markdown template</span><h3>${p.title}</h3><p>${p.desc}</p></div><pre>${escapeHtml(p.text)}</pre><div class="actions"><button class="btn" type="button" data-download>Download .md</button><button class="btn alt" type="button" data-copy>Copy</button></div><p aria-live="polite" class="status"></p>`;el.querySelector('[data-download]').onclick=()=>download(p);el.querySelector('[data-copy]').onclick=async()=>{const s=el.querySelector('.status');try{await navigator.clipboard.writeText(p.text);s.textContent='Copied.'}catch(e){s.textContent='Copy was blocked. Select the template text manually.'}};root.appendChild(el)});
 </script>
+  <script defer src="/desk.js"></script>
 </body>
 </html>

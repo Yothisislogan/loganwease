@@ -78,6 +78,20 @@ Version 011 (three bold, non-insurance features):
    find; all five unlock the bottom-drawer page. Terminal gains `fm` and
    `drawer` commands; footer gains LW-FM.
 
+Version 012 (three more: desk.js on every page):
+1. Screensaver — after 90s idle, the page dims and the LW stamp bounces
+   DVD-style with a live clock; any input dismisses. Disabled under
+   prefers-reduced-motion.
+2. Command palette — Cmd/Ctrl+K or "/" opens an index-card palette with every
+   page, section, tool, and a lamp-toggle action; type to filter, arrows +
+   enter to jump. Root-absolute paths so it works from any page.
+3. The desk cat — lives on the bottom edge of every page, wanders
+   occasionally (more active after hours, gold eyes in the dark), pettable
+   (hearts + purr bubble, count persists in lw-cat-pets). Name it from the
+   home terminal: `cat name <name>`. Terminal also gains `cat` and `palette`.
+All three live in the shared `desk.js`, included on all pages including the
+working-file/playbooks/tools pages.
+
 HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
 (`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
 form attributes and will NOT submit on plain nginx — POSTs to static files
