@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Wastebasket | Logan Wease</title>
+  <meta name="description" content="Where drafts go to become sports. Crumple terrible ideas and flick them into the bin. Bank shots count double." />
+  <meta property="og:title" content="The Wastebasket — where drafts go to become sports" />
+  <meta property="og:description" content="Crumple terrible ideas. Flick them into the bin. Bank shots count double." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://loganwease.com/wastebasket.html" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+  <meta name="theme-color" content="#f3ead8" />
+  <link rel="canonical" href="https://loganwease.com/wastebasket.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script>(function(){try{var t=localStorage.getItem('lw-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/fraunces-var.woff2">
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/plexmono-500.woff2) format('woff2')}
+    @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/plexmono-700.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(assets/fonts/inter-var.woff2) format('woff2')}
+    :root{--ink:#111419;--ink-soft:#3d4653;--muted:#79818d;--paper:#f3ead8;--paper-2:#fff8e9;--line:rgba(17,20,25,.16);--blue:#00AEEF;--blue-deep:#0078a7;--orange:#ff8a3d;--gold:#f0c452;--green:#2fa87c;--head:'Fraunces',Georgia,serif;--mono:'IBM Plex Mono',monospace;--ui:'Inter',system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:var(--ui);line-height:1.6;overflow-x:hidden;
+      background:linear-gradient(90deg,rgba(17,20,25,.045) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(17,20,25,.035) 1px,transparent 1px) 0 0/34px 34px,var(--paper)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+    .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+    .topbar{border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:var(--paper-2);font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em}
+    .top-links{display:flex;gap:18px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+    .top-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+    .hero{padding:40px 0 4px;text-align:center}
+    .kicker{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep)}
+    h1{margin:10px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:.96;font-size:clamp(40px,7vw,64px)}
+    .dek{font-size:16.5px;color:var(--ink-soft);margin:12px auto 0;max-width:520px}
+
+    .scorebar{display:flex;justify-content:center;gap:12px;margin:20px 0 8px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;flex-wrap:wrap}
+    .scorebar span{border:2px solid var(--ink);border-radius:999px;background:var(--paper-2);padding:7px 15px;box-shadow:3px 3px 0 rgba(17,20,25,.12)}
+
+    .court{position:relative;height:430px;margin:6px 0 0;border-bottom:4px solid var(--ink);overflow:hidden}
+    .draft{position:absolute;left:8%;top:40px;width:250px;background:#fff;border:2px solid var(--ink);padding:20px 18px 16px;box-shadow:8px 10px 0 rgba(17,20,25,.15);transform:rotate(-2deg);transition:.25s ease}
+    .draft .dhead{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-deep);margin-bottom:8px}
+    .draft p{margin:0 0 14px;font-family:var(--head);font-weight:700;font-size:17px;line-height:1.35;letter-spacing:-.01em}
+    .draft button{border:2px solid var(--ink);border-radius:8px;background:var(--ink);color:var(--paper-2);padding:9px 14px;font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;box-shadow:3px 3px 0 var(--orange)}
+    .draft button:hover{transform:translate(-1px,-1px)}
+    .draft.gone{transform:rotate(-2deg) scale(.05);opacity:0}
+
+    .ball{position:absolute;width:46px;height:46px;border-radius:50%;cursor:grab;touch-action:none;will-change:left,top;filter:drop-shadow(3px 4px 0 rgba(17,20,25,.2))}
+    .ball svg{display:block;width:100%;height:100%}
+    .ball.held{cursor:grabbing}
+
+    .bin{position:absolute;right:7%;bottom:0;width:120px;height:150px;pointer-events:none}
+    .bin svg{display:block;width:100%;height:100%}
+    .bin.wiggle{animation:binwig .4s ease}
+    @keyframes binwig{25%{transform:rotate(-4deg)}60%{transform:rotate(3deg)}}
+
+    .callout{position:absolute;left:50%;top:16px;transform:translateX(-50%) rotate(-1deg);border:2px solid var(--ink);background:#fff071;padding:9px 16px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:5px 6px 0 rgba(17,20,25,.2);opacity:0;transition:opacity .2s}
+    .callout.show{opacity:1}
+
+    .how{margin:18px auto 0;max-width:560px;text-align:center;font-size:13px;color:var(--muted);line-height:1.6}
+    .foot{border-top:1px solid var(--line);margin-top:40px}
+    .foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+    @media (max-width:640px){.draft{width:200px;left:5%}.bin{right:4%}}
+
+    html.dark body{color:#ece5d6;background:linear-gradient(90deg,rgba(255,248,233,.04) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(255,248,233,.03) 1px,transparent 1px) 0 0/34px 34px,#0b1521}
+    html.dark .topbar{border-bottom-color:rgba(255,248,233,.16)}
+    html.dark .top-links{color:#c2cdd7}
+    html.dark .brand{color:#f3ead8}
+    html.dark .brand-stamp{color:#111419}
+    html.dark .kicker{color:#9de9ff}
+    html.dark .dek{color:#b5c0ca}
+    html.dark .scorebar span,html.dark .draft,html.dark .callout{color:#111419}
+    html.dark .court{border-bottom-color:rgba(255,248,233,.5)}
+    html.dark .how{color:#93a0ac}
+    html.dark .foot{border-top-color:rgba(255,248,233,.14)}
+    html.dark .foot .wrap{color:#93a0ac}
+    @media (prefers-reduced-motion: reduce){.bin.wiggle{animation:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Logan Wease home"><span class="brand-stamp">LW</span><span>Logan Wease / wastebasket</span></a>
+      <nav class="top-links" aria-label="Site">
+        <a href="./">Working file</a>
+        <a href="fm.html">LW-FM</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="kicker">Desk sports &middot; division of drafts</div>
+        <h1>The Wastebasket.</h1>
+        <p class="dek">Where drafts go to become sports. Crumple the idea, then <strong>flick</strong> the ball into the bin. Bounces first? Bank shot &mdash; double points.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="scorebar" aria-live="polite"><span id="sBinned">Binned 0</span><span id="sStreak">Streak 0</span><span id="sBest">Best 0</span></div>
+        <div class="court" id="court">
+          <div class="callout" id="callout"></div>
+          <div class="draft" id="draft">
+            <div class="dhead">Draft &middot; do not ship</div>
+            <p id="draftText"></p>
+            <button id="crumpleBtn" type="button">Crumple it</button>
+          </div>
+          <div class="bin" id="bin" aria-hidden="true">
+            <svg viewBox="0 0 120 150">
+              <path d="M14 18 L106 18 L94 146 L26 146 Z" fill="#0d2135" stroke="#111419" stroke-width="4"/>
+              <path d="M22 34 L98 34" stroke="rgba(255,248,233,.25)" stroke-width="3"/>
+              <path d="M26 52 L94 52" stroke="rgba(255,248,233,.15)" stroke-width="3"/>
+              <ellipse cx="60" cy="18" rx="46" ry="8" fill="#07131f" stroke="#111419" stroke-width="4"/>
+            </svg>
+          </div>
+        </div>
+        <p class="how">Grab the paper ball and throw it with a flick. Keyboard folks: press <strong>T</strong> for a gentle auto-toss (no promises on aim). The bin keeps no grudges; the streak does.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Logan Wease</span>
+      <a href="./">Back to the working file</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const DRAFTS = [
+      'tagline idea: “the michael jordan of paperwork.”',
+      'buy chairs.com. ask about payment plans.',
+      'learn the accordion. clients love accordions, probably.',
+      'email signature: “sent from my desk, obviously.”',
+      'start a podcast about starting podcasts.',
+      'one more monitor. final answer.',
+      'reply to that 2019 email like nothing happened.',
+      'laminate everything. become unstoppable.',
+      'teach the cat invoicing.',
+      'brand refresh: same brand, but louder.',
+      'meeting idea: a meeting about fewer meetings.',
+      'new hobby: alphabetizing the garage.',
+    ];
+    let draftIdx = Math.floor(Math.random() * DRAFTS.length);
+
+    const $ = id => document.getElementById(id);
+    const court = $('court'), draft = $('draft'), bin = $('bin'), callout = $('callout');
+    let binned = 0, streak = 0, best = 0;
+    try{ best = parseInt(localStorage.getItem('lw-toss-best') || '0', 10) || 0; }catch(e){}
+    const hud = () => { $('sBinned').textContent = 'Binned ' + binned; $('sStreak').textContent = 'Streak ' + streak; $('sBest').textContent = 'Best ' + best; };
+    hud();
+
+    let ball = null, raf = null, bounced = false, resolved = false;
+    const G = .55, DAMP = .58, FRICTION = .985;
+
+    function say(msg){
+      callout.textContent = msg;
+      callout.classList.add('show');
+      clearTimeout(say.t);
+      say.t = setTimeout(() => callout.classList.remove('show'), 1700);
+    }
+
+    function newDraft(){
+      draftIdx = (draftIdx + 1) % DRAFTS.length;
+      $('draftText').textContent = DRAFTS[draftIdx];
+      draft.classList.remove('gone');
+      $('crumpleBtn').disabled = false;
+    }
+
+    function makeBall(){
+      ball = document.createElement('div');
+      ball.className = 'ball';
+      ball.innerHTML = '<svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#fdf6e6" stroke="#111419" stroke-width="2.5"/><path d="M12 15l8 5-6 7 10-3 3 9 4-10 7 2-5-8 5-6-9 3-3-7-4 8z" fill="none" stroke="rgba(17,20,25,.45)" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+      const dr = draft.getBoundingClientRect(), cr = court.getBoundingClientRect();
+      ball.style.left = (dr.left - cr.left + dr.width / 2 - 23) + 'px';
+      ball.style.top = (dr.top - cr.top + dr.height / 2 - 23) + 'px';
+      court.appendChild(ball);
+      armBall();
+    }
+
+    function armBall(){
+      bounced = false; resolved = false;
+      let held = false, hx, hy, bx, by, vx = 0, vy = 0, lx, ly, lt;
+      const pos = () => [parseFloat(ball.style.left), parseFloat(ball.style.top)];
+      ball.addEventListener('pointerdown', e => {
+        if(resolved) return;
+        cancelAnimationFrame(raf);
+        held = true; ball.classList.add('held');
+        [bx, by] = pos();
+        hx = e.clientX; hy = e.clientY;
+        lx = e.clientX; ly = e.clientY; lt = performance.now();
+        ball.setPointerCapture(e.pointerId);
+      });
+      ball.addEventListener('pointermove', e => {
+        if(!held) return;
+        ball.style.left = (bx + e.clientX - hx) + 'px';
+        ball.style.top = (by + e.clientY - hy) + 'px';
+        const now = performance.now(), dt = Math.max(1, now - lt);
+        vx = (e.clientX - lx) / dt * 17; vy = (e.clientY - ly) / dt * 17;
+        lx = e.clientX; ly = e.clientY; lt = now;
+      });
+      ball.addEventListener('pointerup', () => {
+        if(!held) return;
+        held = false; ball.classList.remove('held');
+        fly(vx, vy);
+      });
+      addEventListener('keydown', function onKey(e){
+        if(resolved || !ball){ removeEventListener('keydown', onKey); return; }
+        if(e.key.toLowerCase() === 't' && !held){
+          const [x] = pos();
+          const br = bin.getBoundingClientRect(), cr = court.getBoundingClientRect();
+          const dist = (br.left - cr.left + 60) - x;
+          fly(Math.max(6, dist / 46) + (Math.random() - .5) * 3, -13 - Math.random() * 3);
+          removeEventListener('keydown', onKey);
+        }
+      });
+    }
+
+    function fly(vx, vy){
+      let [x, y] = [parseFloat(ball.style.left), parseFloat(ball.style.top)];
+      let still = 0;
+      const step = () => {
+        if(resolved) return;
+        vy += G; vx *= FRICTION;
+        x += vx; y += vy;
+        const W = court.clientWidth, H = court.clientHeight;
+        if(x < 0){ x = 0; vx = -vx * DAMP; bounced = true; }
+        if(x > W - 46){ x = W - 46; vx = -vx * DAMP; bounced = true; }
+        if(y > H - 46){ y = H - 46; vy = -vy * DAMP; bounced = true; if(Math.abs(vy) < 1.2) still++; }
+        ball.style.left = x + 'px'; ball.style.top = y + 'px';
+        // bin mouth test: center inside opening while moving downward
+        const br = bin.getBoundingClientRect(), cr = court.getBoundingClientRect();
+        const mouthL = br.left - cr.left + 16, mouthR = br.left - cr.left + 104, rimY = br.top - cr.top + 14;
+        const cxx = x + 23, cyy = y + 23;
+        if(vy > 0 && cyy > rimY && cyy < rimY + 34 && cxx > mouthL && cxx < mouthR){
+          return sink();
+        }
+        if(still > 24 || y > H + 100){ return miss(); }
+        raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }
+
+    function sink(){
+      resolved = true;
+      const pts = bounced ? 2 : 1;
+      binned += pts; streak += 1;
+      if(streak > best){ best = streak; try{ localStorage.setItem('lw-toss-best', String(best)); }catch(e){} }
+      hud();
+      bin.classList.remove('wiggle'); void bin.offsetWidth; bin.classList.add('wiggle');
+      say(bounced ? 'BANK SHOT · +2' : ['SWISH.', 'BINNED.', 'FILED PERMANENTLY.', 'CLEAN.'][Math.floor(Math.random() * 4)]);
+      ball.style.transition = '.25s ease'; ball.style.opacity = '0'; ball.style.transform = 'scale(.4)';
+      setTimeout(() => { ball.remove(); ball = null; newDraft(); }, 350);
+    }
+    function miss(){
+      resolved = true;
+      streak = 0; hud();
+      say(['THE FLOOR IS NOT A BIN.', 'REJECTED BY THE BIN.', 'KEEP THE DAY JOB.', 'THE CAT SAW THAT.'][Math.floor(Math.random() * 4)]);
+      ball.style.transition = '.4s ease'; ball.style.opacity = '0';
+      setTimeout(() => { ball.remove(); ball = null; newDraft(); }, 450);
+    }
+
+    $('crumpleBtn').addEventListener('click', () => {
+      $('crumpleBtn').disabled = true;
+      draft.classList.add('gone');
+      setTimeout(makeBall, 260);
+    });
+
+    $('draftText').textContent = DRAFTS[draftIdx];
+  </script>
+  <script defer src="/desk.js"></script>
+</body>
+</html>

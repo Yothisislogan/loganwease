@@ -92,6 +92,23 @@ Version 012 (three more: desk.js on every page):
 All three live in the shared `desk.js`, included on all pages including the
 working-file/playbooks/tools pages.
 
+Version 013 (three more bold ones):
+1. The Tour — the site drives itself: a ghost cursor opens a case file,
+   shows the receipts, flips the polaroid, types `lights` into the terminal,
+   pets the cat, and lands on contact, narrating each stop. Started from the
+   hero post-it, the terminal (`tour`), or the palette; any real input hands
+   control back. Restores the lamp state it borrowed.
+2. The Wastebasket (`wastebasket.html`) — desk sports: crumple terrible
+   draft ideas into paper balls and flick them into the bin. Gravity,
+   wall/floor bounces, bank shots score double, streak + best persist
+   (`lw-toss-best`). Press T for an unaimed auto-toss. The 404 page offers
+   "crumple this page instead."
+3. Commentary mode — a director's-commentary track for the homepage: pencil
+   margin notes annotate a dozen spots ("the coffee ring is not a bug").
+   Toggle via terminal `commentary` or the palette; persists (`lw-comm`).
+Palette gains entries for all three; terminal gains `tour`, `toss`,
+`commentary`; wastebasket added to the sitemap.
+
 HOSTING NOTE (nginx): the live site is served by nginx, not Netlify. Two forms
 (`logan-contact` on index.html, `thoughts-subscribe` on thoughts/) use Netlify
 form attributes and will NOT submit on plain nginx — POSTs to static files

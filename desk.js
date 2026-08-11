@@ -118,6 +118,9 @@
     { l: 'Case study: Wease Financial', k: 'Page', h: '/case-studies/wease-financial.html', q: 'agency growth story allstate' },
     { l: 'Agency growth simulator', k: 'Tool', h: '/tools/agency-growth-simulator.html', q: 'calculator simulate' },
     { l: 'Insurance myth machine', k: 'Tool', h: '/tools/insurance-myth-machine.html', q: 'myths quiz' },
+    { l: 'The wastebasket · desk sports', k: 'Page', h: '/wastebasket.html', q: 'game toss paper crumple flick bin' },
+    { l: 'Take the tour', k: 'Action', h: '/?tour=1', q: 'demo guide show me around self driving' },
+    { l: 'Commentary mode', k: 'Action', h: '/?commentary=1', q: 'director notes margins annotations' },
     { l: 'Toggle the desk lamp', k: 'Action', a: 'lamp', q: 'dark mode light night lights theme' }
   ];
   var pal = null, palSel = 0, palItems = [];

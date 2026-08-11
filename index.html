@@ -226,6 +226,15 @@
       position:absolute;right:18px;bottom:42px;width:210px;background:#fff071;border:2px solid var(--ink);padding:18px;z-index:8;transform:rotate(5deg);box-shadow:9px 11px 0 rgba(17,20,25,.16);
       font-family:var(--mono);font-size:13px;font-weight:800;line-height:1.35;
     }
+    button.postit{appearance:none;cursor:pointer;text-align:left;color:var(--ink);transition:.18s ease}
+    button.postit:hover{transform:rotate(3deg) translateY(-3px)}
+    .tour-cursor{position:fixed;z-index:10005;width:26px;height:26px;pointer-events:none;transition:left .7s cubic-bezier(.4,0,.2,1), top .7s cubic-bezier(.4,0,.2,1);filter:drop-shadow(2px 3px 3px rgba(0,0,0,.35))}
+    .tour-cursor.tap{animation:tourtap .35s ease}
+    @keyframes tourtap{40%{transform:scale(.75)}}
+    .tour-note{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) rotate(-.5deg);z-index:10005;background:var(--ink);color:var(--paper-2);border:2px solid var(--paper-2);padding:12px 20px;font-family:var(--mono);font-size:13px;font-weight:800;letter-spacing:.06em;box-shadow:6px 7px 0 rgba(0,0,0,.4);max-width:88vw;text-align:center}
+    .comm-note{position:absolute;z-index:40;max-width:210px;font-family:var(--head);font-style:italic;font-weight:600;font-size:15.5px;line-height:1.35;color:rgba(17,20,25,.6);transform:rotate(-2deg);pointer-events:none}
+    .comm-note:nth-child(2n){transform:rotate(1.6deg)}
+    html.dark .comm-note{color:rgba(236,229,214,.55)}
 
     .ticker-wrap{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper-2);overflow:hidden}
     .ticker{display:flex;width:max-content;animation:scroll 26s linear infinite;font-family:var(--mono);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
@@ -485,6 +494,7 @@
             </div>
             <form id="termForm" autocomplete="off"><span class="prompt">&gt;</span><input id="termIn" aria-label="Terminal command input" placeholder="help" /></form>
           </div>
+          <button class="postit" id="tourBtn" type="button">First time at this desk?<br />&rarr; TAKE THE TOUR</button>
           <p class="desk-hint">psst &mdash; the desk is real. drag things. <button type="button" id="deskReset" hidden>reset desk</button></p>
         </div>
       </section>
@@ -721,7 +731,10 @@
       };
       const go = (url) => setTimeout(() => { location.href = url; }, 550);
       const CMDS = {
-        help: () => ['commands: projects · ideas · thoughts · bio · fm · drawer · cat · palette · contact · lights · claim · coffee · sudo · clear'],
+        help: () => ['commands: projects · ideas · thoughts · bio · fm · drawer · cat · palette · tour · toss · commentary · contact · lights · claim · coffee · sudo · clear'],
+        tour: () => { setTimeout(() => window.lwTour && window.lwTour(), 400); return ['starting the tour. hands off the wheel …']; },
+        toss: () => { go('wastebasket.html'); return ['opening the wastebasket. stretch first …']; },
+        commentary: () => { const on = window.lwCommentary && window.lwCommentary(); return [on ? 'commentary on. the site will now explain itself.' : 'commentary off. mystery restored.']; },
         palette: () => { if(window.lwDesk){ window.lwDesk.palette(); return ['opening the palette … (tip: ⌘K works anywhere)']; } return ['palette not loaded yet — try again in a second.']; },
         cat: (args) => {
           const d = window.lwDesk && window.lwDesk.cat;
@@ -971,6 +984,144 @@
         resetBtn.hidden = true;
       });
     }
+
+    // The Tour: the site drives itself
+    (function(){
+      let on = false, dead = false, timers = [], ghost, note, handlers = [];
+      const wait = ms => new Promise(res => timers.push(setTimeout(res, ms)));
+      const say = txt => { if(note) note.textContent = txt; };
+      const moveTo = el => {
+        const r = el.getBoundingClientRect();
+        ghost.style.left = (r.left + r.width / 2) + 'px';
+        ghost.style.top = (r.top + Math.min(r.height / 2, 110)) + 'px';
+        return wait(800);
+      };
+      const tap = el => {
+        ghost.classList.remove('tap'); void ghost.offsetWidth; ghost.classList.add('tap');
+        el.click();
+      };
+      const show = (el, block) => { el.scrollIntoView({ block: block || 'center' }); return wait(900); };
+      function teardown(msg){
+        if(dead) return; dead = true;
+        timers.forEach(clearTimeout);
+        handlers.forEach(h => removeEventListener(h[0], h[1], true));
+        const dlg = document.getElementById('caseDialog');
+        if(dlg && dlg.open) dlg.close();
+        if(photoCard) photoCard.classList.remove('flipped');
+        if(note){ note.textContent = msg; setTimeout(() => { note.remove(); ghost.remove(); }, 2600); }
+        on = false;
+      }
+      window.lwTour = async function(){
+        if(on) return; on = true; dead = false; timers = [];
+        ghost = document.createElement('div');
+        ghost.className = 'tour-cursor';
+        ghost.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24"><path d="M5 2l14 8.5-6.2 1.6L16 20l-3.2 1.4-3.2-7.9L5 18z" fill="#fff8e9" stroke="#111419" stroke-width="1.6"/></svg>';
+        ghost.style.left = '50%'; ghost.style.top = '40%';
+        note = document.createElement('div');
+        note.className = 'tour-note';
+        note.setAttribute('role', 'status');
+        document.body.appendChild(ghost); document.body.appendChild(note);
+        const stop = e => { if(e.isTrusted) teardown('you took the wheel — good. it’s your desk now.'); };
+        ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(ev => { addEventListener(ev, stop, true); handlers.push([ev, stop]); });
+        const wasDark = document.documentElement.classList.contains('dark');
+
+        window.scrollTo({ top: 0 });
+        say('this is the working file. it gives tours now.');
+        await wait(2400); if(dead) return;
+
+        const opener = document.querySelector('.case-open');
+        await show(opener); if(dead) return;
+        say('the case files actually open. watch —');
+        await moveTo(opener); if(dead) return;
+        tap(opener);
+        await wait(2800); if(dead) return;
+        tap(document.getElementById('cdClose'));
+        await wait(600); if(dead) return;
+
+        const stats = document.querySelector('.stat-row');
+        if(stats){ await show(stats); if(dead) return; say('real numbers. the plaques below are the hardware.'); await wait(2600); if(dead) return; }
+
+        await show(document.querySelector('.hero-board')); if(dead) return;
+        say('there’s a note on the back of the photo.');
+        await moveTo(flipBtn); if(dead) return;
+        tap(flipBtn);
+        await wait(2400); if(dead) return;
+        tap(flipBtn);
+        await wait(500); if(dead) return;
+
+        say('the terminal talks back. lights, please.');
+        await moveTo(termIn); if(dead) return;
+        for(const ch of 'lights'){ termIn.value += ch; await wait(110); if(dead) return; }
+        termForm.requestSubmit();
+        await wait(2200); if(dead) return;
+
+        const catEl = document.querySelector('.lw-cat');
+        if(catEl){ say('there is a cat. it counts your pets.'); await moveTo(catEl); if(dead) return; tap(catEl); await wait(2400); if(dead) return; }
+
+        if(document.documentElement.classList.contains('dark') !== wasDark){
+          termIn.value = 'lights'; termForm.requestSubmit();
+          await wait(900); if(dead) return;
+        }
+
+        await show(document.getElementById('contact')); if(dead) return;
+        say('and this is the front door. the rest is yours — try ⌘K.');
+        await wait(3000); if(dead) return;
+        teardown('tour complete. poke around — the drawer won’t find itself.');
+      };
+      const tb = document.getElementById('tourBtn');
+      if(tb) tb.addEventListener('click', () => window.lwTour());
+    })();
+
+    // Commentary mode: the site annotates itself
+    (function(){
+      const NOTES = [
+        ['h1', 'four drafts. the last three just added punctuation.'],
+        ['.brand-stamp', 'total brand budget: $0. money well spent.'],
+        ['.receipt', 'hand-dated because it’s a real note. check back.'],
+        ['#photoCard', 'there’s writing on the back. yes, really.'],
+        ['.console', 'it talks back. be nice to it.'],
+        ['#case-files h2', 'six folders. they open. the coffee ring is not a bug.'],
+        ['.stat-row', 'the only section lawyers and moms both enjoy.'],
+        ['#principles h2', 'sticky notes: the original database.'],
+        ['.quote-panel blockquote', 'he says this in real meetings. now it’s load-bearing.'],
+        ['#field-logs h2', 'one essay is real. the drafts are ambition.'],
+        ['.contact-card h2', 'the form stamps RECEIVED when you send. worth it.'],
+        ['.footer-links', 'you read footer commentary. we’re the same kind of person.']
+      ];
+      let onEls = [];
+      function place(){
+        onEls.forEach(n => n.remove()); onEls = [];
+        NOTES.forEach(pair => {
+          const t = document.querySelector(pair[0]);
+          if(!t) return;
+          const r = t.getBoundingClientRect();
+          const n = document.createElement('div');
+          n.className = 'comm-note';
+          n.textContent = '✎ ' + pair[1];
+          document.body.appendChild(n);
+          let left = r.right + scrollX + 14, top = r.top + scrollY - 2;
+          if(left + 220 > scrollX + innerWidth){ left = Math.max(12, r.left + scrollX); top = r.bottom + scrollY + 6; }
+          n.style.left = left + 'px'; n.style.top = top + 'px';
+          onEls.push(n);
+        });
+      }
+      let active = false, rz;
+      window.lwCommentary = function(force){
+        active = force === undefined ? !active : !!force;
+        if(active){ place(); setTimeout(place, 1500); }
+        else { onEls.forEach(n => n.remove()); onEls = []; }
+        try{ localStorage.setItem('lw-comm', active ? '1' : ''); }catch(e){}
+        return active;
+      };
+      addEventListener('resize', () => { if(!active) return; clearTimeout(rz); rz = setTimeout(place, 250); });
+      let saved = '';
+      try{ saved = localStorage.getItem('lw-comm') || ''; }catch(e){}
+      if(saved === '1') setTimeout(() => window.lwCommentary(true), 1200);
+    })();
+
+    // URL triggers from the palette (/?tour=1, /?commentary=1)
+    if(location.search.indexOf('tour') !== -1) setTimeout(() => window.lwTour(), 900);
+    if(location.search.indexOf('commentary') !== -1) setTimeout(() => window.lwCommentary(true), 900);
   </script>
   <script defer src="/desk.js"></script>
 </body>
