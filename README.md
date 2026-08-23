@@ -1,5 +1,11 @@
 # LoganWease.com creative rebuild
 
+> **Build pipeline:** this repo now builds `src/` + `content/` into `dist/` via
+> `python3 build.py`. Pages live in `src/`, markdown content in `content/`, and
+> `dist/` is generated (gitignored). See [DEPLOY.md](DEPLOY.md) before deploying —
+> the webhook must rsync `dist/`, not the repo root.
+
+
 This is version 002 of the Logan Wease personal founder site.
 
 Concept: a working file / operator desk rather than a standard founder template.

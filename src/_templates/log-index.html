@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--@include:head-->
+  <title>Build log | Logan Wease</title>
+  <meta name="description" content="Notes on what I'm building and what broke — radio stations, LLM relays, form tooling, and browser games." />
+  <link rel="canonical" href="{{canonical}}" />
+  <meta property="og:title" content="Build log | Logan Wease" />
+  <meta property="og:description" content="Notes on what I'm building and what broke." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{canonical}}" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+  <link rel="alternate" type="application/rss+xml" title="Logan Wease — build log" href="/log/feed.xml" />
+</head>
+<body>
+  <!--@include:header-->
+  <main id="main">
+    <div class="wrap page-head">
+      <div class="kicker">Build log</div>
+      <h1>What I'm building, and what broke.</h1>
+      <p class="dek">Short technical notes on the things on this site: what it is, why I built it, the stack, what went wrong, and what I'd do differently. <a href="/log/feed.xml">RSS</a>.</p>
+    </div>
+    <div class="wrap">
+      <ul class="log-list">
+{{items}}
+      </ul>
+    </div>
+  </main>
+  <!--@include:footer-->
+</body>
+</html>

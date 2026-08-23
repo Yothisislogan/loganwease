@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--@include:head-->
+  <title>{{title}} | Logan Wease</title>
+  <meta name="description" content="{{description}}" />
+  <link rel="canonical" href="{{canonical}}" />
+  <meta property="og:title" content="{{title}} | Logan Wease" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{canonical}}" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+</head>
+<body>
+  <!--@include:header-->
+  <main id="main">
+    <div class="wrap page-head">
+      <div class="kicker">{{kicker}}</div>
+      <h1>{{title}}</h1>
+      <p class="dek">{{description}}</p>
+    </div>
+    <div class="wrap prose">
+      {{content}}
+    </div>
+  </main>
+  <!--@include:footer-->
+</body>
+</html>

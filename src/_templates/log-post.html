@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--@include:head-->
+  <title>{{title}} | Logan Wease</title>
+  <meta name="description" content="{{summary}}" />
+  <link rel="canonical" href="{{canonical}}" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{summary}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{canonical}}" />
+  <meta property="og:image" content="https://loganwease.com/assets/og-card.jpg" />
+  <meta property="article:published_time" content="{{date}}" />
+  <link rel="alternate" type="application/rss+xml" title="Logan Wease — build log" href="/log/feed.xml" />
+</head>
+<body>
+  <!--@include:header-->
+  <main id="main">
+    <article>
+      <div class="wrap page-head">
+        <div class="post-meta"><time datetime="{{date}}">{{pretty_date}}</time><span>{{tag_list}}</span></div>
+        <h1>{{title}}</h1>
+        <p class="dek">{{summary}}</p>
+      </div>
+      <div class="wrap prose">
+        {{content}}
+      </div>
+    </article>
+    <div class="wrap" style="padding-top:14px">
+      <a class="btn alt" href="/log/">&larr; All posts</a>
+    </div>
+  </main>
+  <!--@include:footer-->
+</body>
+</html>

@@ -1,0 +1,23 @@
+<footer class="foot">
+  <div class="wrap">
+    <span>&copy; <span data-year>2026</span> Logan Wease</span>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/lab/">Lab</a>
+      <a href="/log/">Log</a>
+      <a href="/uses/">Uses</a>
+      <a href="/play/">Play</a>
+      <a href="/log/feed.xml">RSS</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('[data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+  document.querySelectorAll('[data-lamp]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var dark = document.documentElement.classList.toggle('dark');
+      try{ localStorage.setItem('lw-theme', dark ? 'dark' : 'light'); }catch(e){}
+    });
+  });
+</script>
+<script defer src="/desk.js"></script>

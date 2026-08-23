@@ -1,0 +1,134 @@
+/* site.css — shared chrome for build-generated pages (/uses, /log, /lab).
+   Hand-written pages keep their own inline styles for now; this is the common
+   layer everything new is built on. Cache-busted via ?v=<sha> by build.py. */
+
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;src:url(/assets/fonts/fraunces-var.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/plexmono-500.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/plexmono-700.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
+
+:root{
+  --ink:#111419;
+  --ink-soft:#3d4653;
+  --muted:#79818d;
+  --paper:#f3ead8;
+  --paper-2:#fff8e9;
+  --line:rgba(17,20,25,.16);
+  --blue:#00AEEF;
+  --blue-deep:#0078a7;
+  --orange:#ff8a3d;
+  --gold:#f0c452;
+  --green:#2fa87c;
+  --head:'Fraunces', Georgia, serif;
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ui:'Inter', system-ui, -apple-system, sans-serif;
+  --measure:720px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  margin:0;color:var(--ink);font-family:var(--ui);line-height:1.65;
+  background:
+    linear-gradient(90deg, rgba(17,20,25,.045) 1px, transparent 1px) 0 0/34px 34px,
+    linear-gradient(rgba(17,20,25,.035) 1px, transparent 1px) 0 0/34px 34px,
+    var(--paper);
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px}
+.skip-link{position:absolute;left:-999px;top:12px;background:var(--ink);color:var(--paper-2);padding:10px 14px;border-radius:8px;z-index:999}
+.skip-link:focus{left:12px}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 22px}
+
+/* ---- top bar ---- */
+.topbar{border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:15px;padding-bottom:15px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;flex:none}
+.brand-stamp{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--blue);background:var(--paper-2);font-family:var(--head);font-weight:900;font-size:15px;letter-spacing:-.05em;flex:none}
+.nav{display:flex;gap:16px;align-items:center;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);flex-wrap:wrap}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+
+/* ---- page head ---- */
+.page-head{padding:52px 0 6px}
+.kicker{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--blue-deep);display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:32px;height:2px;background:var(--blue-deep)}
+.kicker:empty,.dek:empty,.post-meta span:empty{display:none}
+h1{margin:14px 0 0;font-family:var(--head);font-weight:900;letter-spacing:-.045em;line-height:1;font-size:clamp(40px,7vw,62px)}
+.dek{font-size:18.5px;color:var(--ink-soft);margin:16px 0 0;max-width:600px}
+
+/* ---- prose ---- */
+.prose{padding:26px 0 10px;font-size:17.5px;line-height:1.75}
+.prose h2{font-family:var(--head);font-weight:900;letter-spacing:-.03em;font-size:27px;line-height:1.18;margin:42px 0 12px}
+.prose h3{font-family:var(--head);font-weight:800;letter-spacing:-.02em;font-size:21px;margin:30px 0 10px}
+.prose p,.prose ul,.prose ol{margin:0 0 20px}
+.prose ul,.prose ol{padding-left:22px}
+.prose li{margin:0 0 7px}
+.prose a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--blue-deep)}
+.prose a:hover{color:var(--blue-deep)}
+.prose strong{font-weight:700}
+.prose code{font-family:var(--mono);font-size:.87em;background:rgba(17,20,25,.07);padding:2px 6px;border-radius:5px}
+.prose pre{background:#0d1a2a;color:#dceef6;border:2px solid var(--ink);border-radius:12px;padding:18px;overflow-x:auto;margin:0 0 22px;font-size:14px;line-height:1.6}
+.prose pre code{background:none;padding:0;color:inherit;font-size:inherit}
+.prose blockquote{margin:26px 0;padding:4px 0 4px 20px;border-left:4px solid var(--blue);font-family:var(--head);font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.prose hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+.prose table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15.5px}
+.prose th,.prose td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+.prose th{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em}
+
+/* ---- log ---- */
+.log-list{list-style:none;margin:24px 0 0;padding:0}
+.log-item{border-bottom:1px solid var(--line)}
+.log-item a{display:block;padding:26px 0}
+.log-item time{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep)}
+.log-item h2{margin:9px 0 7px;font-family:var(--head);font-weight:900;letter-spacing:-.035em;line-height:1.15;font-size:clamp(23px,4vw,29px)}
+.log-item p{margin:0;color:var(--ink-soft);font-size:16.5px}
+.log-item a:hover h2{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.post-meta{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-deep);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ---- footer ---- */
+.foot{border-top:1px solid var(--line);margin-top:56px}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;padding-bottom:32px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.foot-links{display:flex;gap:15px;flex-wrap:wrap}
+.foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);border-radius:10px;padding:12px 18px;background:var(--ink);color:var(--paper-2);font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;box-shadow:4px 4px 0 var(--orange);cursor:pointer}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--orange)}
+.btn.alt{background:var(--paper-2);color:var(--ink);box-shadow:4px 4px 0 var(--blue)}
+
+/* ---- after hours ---- */
+html.dark body{
+  color:#ece5d6;
+  background:
+    linear-gradient(90deg, rgba(255,248,233,.04) 1px, transparent 1px) 0 0/34px 34px,
+    linear-gradient(rgba(255,248,233,.03) 1px, transparent 1px) 0 0/34px 34px,
+    #0b1521;
+}
+html.dark .topbar,html.dark .foot{border-color:rgba(255,248,233,.16)}
+html.dark .nav{color:#c2cdd7}
+html.dark .nav a:hover,html.dark .nav a[aria-current="page"]{color:#fff8e9}
+html.dark .brand{color:#f3ead8}
+html.dark .brand-stamp{color:#111419}
+html.dark .kicker,html.dark .post-meta,html.dark .log-item time{color:#9de9ff}
+html.dark .dek,html.dark .log-item p{color:#b5c0ca}
+html.dark .prose{color:#ddd6c8}
+html.dark .prose code{background:rgba(255,248,233,.1)}
+html.dark .prose a{text-decoration-color:#9de9ff}
+html.dark .prose a:hover{color:#9de9ff}
+html.dark .log-item{border-color:rgba(255,248,233,.14)}
+html.dark .foot .wrap{color:#93a0ac}
+html.dark .foot a:hover{color:#fff8e9}
+html.dark .btn.alt{color:var(--ink)}
+html.dark a:focus-visible,html.dark button:focus-visible{outline-color:#9de9ff}
+.lamp-btn{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);border-radius:999px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:2px 2px 0 var(--blue);flex:none}
+html.dark .lamp-btn{background:#0d1a2a;color:var(--gold);border-color:rgba(255,248,233,.4)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+@media print{
+  .topbar,.foot,.lamp-btn,.skip-link{display:none}
+  body{background:#fff}
+}
